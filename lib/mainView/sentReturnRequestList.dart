@@ -216,7 +216,8 @@ class _SentReturnRequestListState extends State<SentReturnRequestListPage> {
                             ),
                           ),
                           Divider(
-                            height: 2,
+                            thickness: 1,
+                            height: 1,
                             indent: 15,
                             endIndent: 15,
                           ),
