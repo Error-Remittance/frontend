@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/register/signUpStart.dart';
-import 'package:frontend/mainView/accountList.dart';
+import 'package:frontend/register/setPattern.dart';
 import 'package:bottom_drawer/bottom_drawer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -380,7 +380,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                       Navigator.push(
                         context,
                         MaterialPageRouteWithoutAnimation(
-                          builder: (context) => AccountListPage(
+                          builder: (context) => SetPattern(
                           //   userId: widget.userId,
                           //   password: widget.password,
                           //   name: widget.name,

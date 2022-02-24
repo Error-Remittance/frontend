@@ -1,7 +1,7 @@
-import 'package:example/util.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:pattern_lock/pattern_lock.dart';
+import 'package:frontend/register/patternLock/patternLock.dart';
+import 'package:frontend/register/utils.dart';
 
 class SetPattern extends StatefulWidget {
   @override
@@ -19,7 +19,7 @@ class _SetPatternState extends State<SetPattern> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: Text("Check Pattern"),
+        title: Text("Set Pattern"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -35,10 +35,10 @@ class _SetPatternState extends State<SetPattern> {
               selectedColor: Colors.amber,
               pointRadius: 12,
               onInputComplete: (List<int> input) {
-                if (input.length < 3) {
+                if (input.length < 4) {
                   context.replaceSnackbar(
                     content: Text(
-                      "At least 3 points required",
+                      "At least 4 points required",
                       style: TextStyle(color: Colors.red),
                     ),
                   );
