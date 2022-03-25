@@ -24,7 +24,7 @@ class _SignUpStartState extends State<SignUpStartPage> {
           children: <Widget>[
             Center(),
             SizedBox(
-              height: 16,
+              height: 10,
             ),
             Container(
               height: 525,

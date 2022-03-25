@@ -52,7 +52,7 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#ffffff"
-  image: lib/assets/ic_launcher.png
+  image: lib/assets/ic_launcher_temp.png
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

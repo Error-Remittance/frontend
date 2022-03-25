@@ -126,7 +126,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
               Container(
                 width: 200,
                 child: TextFormField(
-                  enabled: false,
+                  // enabled: false,
                   controller: phoneNumberController1,
                   decoration: InputDecoration(
                     hintText: "전화번호 입력",
