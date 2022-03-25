@@ -35,11 +35,11 @@ class PatternLock extends StatefulWidget {
     this.dimension = 3,
     this.relativePadding = 0.7,
     this.selectedColor, // Theme.of(context).primaryColor if null
-    this.notSelectedColor = Colors.black45,
+    this.notSelectedColor = Colors.black,
     this.pointRadius = 10,
     this.showInput = true,
     this.selectThreshold = 25,
-    this.fillPoints = false,
+    this.fillPoints = true,
     required this.onInputComplete,
   }) : super(key: key);
 
