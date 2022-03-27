@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/register/signUpStart.dart';
 import 'package:frontend/register/setPattern.dart';
-import 'package:bottom_drawer/bottom_drawer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignUpIdentificationPage extends StatefulWidget {
@@ -197,8 +196,11 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
   showAgreeModal() {
     showModalBottomSheet(
         context: context,
+        isScrollControlled: true,
         builder: (BuildContext context) {
-          return Container(
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.75,
+            child: Container(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -372,7 +374,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                 ),
 
                 SizedBox(
-                  height: 10,
+                  height: MediaQuery.of(context).size.height * 0.75 * 0.25,
                 ),
                 Center(
                   child: ElevatedButton(
@@ -402,7 +404,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                       animationDuration: Duration(days: 10000),
                       splashFactory: NoSplash.splashFactory,
                       fixedSize: Size(
-                          320, 40
+                          320, 50
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -414,9 +416,10 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                 ),
               ],
             ),
-          );
-        },
-      );
+          ),
+        );
+      },
+    );
   }
 }
 
