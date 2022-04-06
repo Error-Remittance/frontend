@@ -38,7 +38,24 @@ class _SignUpStartState extends State<SignUpStartPage> {
                       Container(
                         margin: EdgeInsets.only(left: 20, bottom: 20),
                         alignment: Alignment.centerLeft,
-                        child: Text("어서오세요 고객님!\n\n착오송금 문제를 해결하려\n여기까지 오셨다고요?\n\n이제 간편한 방식으로\n돈을 돌려받고, 반환해주세요."),
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.only(bottom: 10),
+                              alignment: Alignment.centerLeft,
+                              child: Text("어서오세요 고객님!"),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(bottom: 10),
+                              alignment: Alignment.centerLeft,
+                              child: Text("착오송금 문제를 해결하려\n여기까지 오셨다고요?"),
+                            ),
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              child: Text("이제 간편한 방식으로\n돈을 돌려받고, 반환해주세요."),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   )
