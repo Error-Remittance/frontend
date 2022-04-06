@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:frontend/register/signUpStart.dart';
 import 'package:frontend/register/setPattern.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,6 +21,8 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
   bool isAuthenticated = false;
   String authMessage = "인증 요청을 해주세요.";
   late String verificationId;
+
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -46,149 +49,146 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
             ),
           ),
       ),
-      body: Column(
-        children: <Widget>[
-          SizedBox(
-            height: 30,
-          ),
-          Container(
-            width: 300,
-            height: 60,
-            child: Text(
-              '먼저, 본인 확인부터\n진행해볼게요!',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w800
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(top: 20,left: 40),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                '먼저, 본인 확인부터\n진행해볼게요!',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w800
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 300,
-                child: TextField(
-                  controller: nameController,
-                  decoration: InputDecoration(
-                    hintText: '이름 입력',
-                    contentPadding: EdgeInsets.all(5.0),
-                  ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.8,
+              decoration: BoxDecoration(
+                border: Border(bottom: BorderSide(color: Colors.black38)),
+              ),
+              child: TextField(
+                controller: nameController,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: '이름 입력',
+                  contentPadding: EdgeInsets.all(5),
                 ),
               ),
-            ],
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 138,
-                child: TextField(
-                  controller: frontRRNController,
-                  decoration: InputDecoration(
-                    hintText: '주민번호 앞 6자리',
-                    contentPadding: EdgeInsets.all(5.0),
-                  ),
-                ),
-              ),
-              Container(
-                width: 24,
-                child: Text(
-                  ' - ',
-                  style: TextStyle(fontSize: 30),
-                ),
-              ),
-              Container(
-                width: 138,
-                child: TextField(
-                  controller: backRRNController,
-                  decoration: InputDecoration(
-                    hintText: '뒤 7자리',
-                    contentPadding: EdgeInsets.all(5.0),
-                  ),
-                  obscureText: true,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 200,
-                child: TextFormField(
-                  // enabled: false,
-                  controller: phoneNumberController1,
-                  decoration: InputDecoration(
-                    hintText: "전화번호 입력",
-                    contentPadding: EdgeInsets.all(5.0),
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              Container(
-                width: 90,
-                height: 27,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    // 인증 요청 로직
-                  },
-                  child: Text(
-                    '인증 요청',
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 13,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: Row(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.8*0.45,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+                      ],
+                      controller: frontRRNController,
+                      decoration: InputDecoration(
+                        hintText: '주민번호 앞 6자리',
+                        contentPadding: EdgeInsets.all(5),
+                      ),
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    splashFactory: NoSplash.splashFactory,
-                    primary: Color(0xffe2dfdf),
-                    // side: BorderSide(width: 0, color: Colors.white38),
+                  Container(
+                    alignment: Alignment.center,
+                    width: MediaQuery.of(context).size.width * 0.8*0.1,
+                    child: Text(
+                      ' - ',
+                      style: TextStyle(fontSize: 30),
+                    ),
                   ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.8*0.45,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+                      ],
+                      controller: backRRNController,
+                      decoration: InputDecoration(
+                        hintText: '뒤 7자리',
+                        contentPadding: EdgeInsets.all(5),
+                      ),
+                      obscureText: true,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.8,
+              decoration: BoxDecoration(
+                border: Border(bottom: BorderSide(color: Colors.black38)),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    width: MediaQuery.of(context).size.width * 0.8*0.7,
+                    child: TextFormField(
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+                      ],
+                      controller: phoneNumberController1,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "전화번호 입력",
+                        contentPadding: EdgeInsets.all(5.0),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.8*0.3,
+                    height: 27,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        // 인증 요청 로직
+                      },
+                      child: Text(
+                        '인증 요청',
+                        style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 13,
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        splashFactory: NoSplash.splashFactory,
+                        primary: Color(0xffe2dfdf),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: TextField(
+                controller: certificationNumberController,
+                decoration: InputDecoration(
+                  hintText: 'SMS 인증',
+                  contentPadding: EdgeInsets.all(5),
                 ),
               ),
-            ],
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 290,
-                child: TextField(
-                  controller: certificationNumberController,
-                  decoration: InputDecoration(
-                    hintText: 'SMS 인증',
-                    contentPadding: EdgeInsets.all(5.0),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Spacer(),
-          IconButton(
-            onPressed: showAgreeModal,
-            icon: Image.asset('lib/assets/button_accept.png'),
-            iconSize: 80,
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-          ),
-        ],
+            ),
+            Spacer(),
+            IconButton(
+              onPressed: showAgreeModal,
+              icon: Image.asset('lib/assets/button_accept.png'),
+              iconSize: 80,
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -201,210 +201,287 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
           return SizedBox(
             height: MediaQuery.of(context).size.height * 0.75,
             child: Container(
-            padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
+            padding: EdgeInsets.only(top: 25),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16.0),
-                topRight: Radius.circular(16.0),
-              ),
               color: Colors.white,
             ),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
-                Center(
-                  child: Container(
-                    width: 320,
-                    height: 60,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(
-                          color: Color(0xff8a93bc),
-                        )
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(width:20, height:20),
-                        Text(
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.85,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(
+                        color: Color(0xff8a93bc),
+                      )
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 20),
+                        child: Text(
                           '약관에 모두 동의',
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                             color: Colors.black,
                             fontWeight: FontWeight.w800,
                           ),
                         ),
-
-                      ],
-                    ),
-                  ),
-                ),
-                Center(
-                  child:SizedBox(
-                      width: 350,
-                      height: (55 * 5).toDouble(),
-                      child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(16.0),
-                              topRight: Radius.circular(16.0),
-                            ),
-                            color: Colors.white,
-                          ),
-                          child: Stack(
-                            clipBehavior: Clip.none, alignment: Alignment(0, 0),
-                            children: <Widget>[
-                              Positioned(
-                                child: ListView(
-                                  physics: NeverScrollableScrollPhysics(),
-                                  children: <Widget>[
-                                    ListTile(
-                                      title: Text(
-                                        "착송 필수 항목 모두 동의",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      trailing: Icon(
-                                        Icons.chevron_right,
-                                        color: Color(0xff626262),
-                                      ),
-                                      onTap: () {},
-                                      leading: Radio(
-                                        value: 1,
-                                        groupValue: -1,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            // val = value;
-                                          });
-                                        },
-                                        activeColor: Colors.blue,
-                                      ),
-                                    ),
-                                    ListTile(
-                                      title: Text(
-                                        "휴대폰/카드 본인확인 서비스",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      trailing: Icon(
-                                        Icons.chevron_right,
-                                        color: Color(0xff626262),
-                                      ),
-                                      onTap: () {},
-                                      leading: Radio(
-                                        value: 2,
-                                        groupValue: -1,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            // val = value;
-                                          });
-                                        },
-                                        activeColor: Colors.blue,
-                                      ),
-                                    ),
-                                    ListTile(
-                                      title: Text(
-                                        "문자/이메일 수신 동의",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      trailing: Icon(
-                                        Icons.chevron_right,
-                                        color: Color(0xff626262),
-                                      ),
-                                      onTap: () {},
-                                      leading: Radio(
-                                        value: 3,
-                                        groupValue: -1,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            // val = value;
-                                          });
-                                        },
-                                        activeColor: Colors.blue,
-                                      ),
-                                    ),
-                                    ListTile(
-                                      title: Text(
-                                        "맞춤형 광고 선택 동의",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      trailing: Icon(
-                                        Icons.chevron_right,
-                                        color: Color(0xff626262),
-                                      ),
-                                      onTap: () {},
-                                      leading: Radio(
-                                        value: 4,
-                                        groupValue: -1,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            // val = value;
-                                          });
-                                        },
-                                        activeColor: Colors.blue,
-                                      ),
-                                    ),
-                                    ListTile(
-                                      title: Text(
-                                        "마케팅 정보 수신 동의",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      trailing: Icon(
-                                        Icons.chevron_right,
-                                        color: Color(0xff626262),
-                                      ),
-                                      onTap: () {},
-                                      leading: Radio(
-                                        value: 5,
-                                        groupValue: -1,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            // val = value;
-                                          });
-                                        },
-                                        activeColor: Colors.blue,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
                       ),
+                      // 체크박스 들어갈 자리
+                      Spacer(),
+                      Container(
+                        margin: EdgeInsets.only(right: 15),
+                        child: IconButton(
+                          icon: Icon(Icons.check_circle_outline),
+                          onPressed: () {},
+                        )
+                      ),
+                    ],
                   ),
                 ),
-
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.75 * 0.25,
+                Container(
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width * 0.85,
+                  margin: EdgeInsets.only(top: 20),
+                  child: Column(
+                    children: [
+                      Container(
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              child: Checkbox(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(10)
+                                  ),
+                                ),
+                                value: isChecked,
+                                onChanged: (value) {
+                                  setState(() {
+                                    isChecked = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 20),
+                              child: Text(
+                                "착송 필수 항목 모두 동의",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                            Spacer(),
+                            Container(
+                              margin: EdgeInsets.only(right: 20),
+                              child: Icon(
+                                Icons.chevron_right,
+                                color: Color(0xff626262),
+                                size: 30,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              child: Checkbox(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(10)
+                                  ),
+                                ),
+                                value: isChecked,
+                                onChanged: (value) {
+                                  setState(() {
+                                    isChecked = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 20),
+                              child: Text(
+                                "휴대폰/카드 본인확인 서비스",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                            Spacer(),
+                            Container(
+                              margin: EdgeInsets.only(right: 20),
+                              child: Icon(
+                                Icons.chevron_right,
+                                color: Color(0xff626262),
+                                size: 30,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              child: Checkbox(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(10)
+                                  ),
+                                ),
+                                value: isChecked,
+                                onChanged: (value) {
+                                  setState(() {
+                                    isChecked = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 20),
+                              child: Text(
+                                "문자/이메일 수신 동의",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                            Spacer(),
+                            Container(
+                              margin: EdgeInsets.only(right: 20),
+                              child: Icon(
+                                Icons.chevron_right,
+                                color: Color(0xff626262),
+                                size: 30,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              child: Checkbox(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(10)
+                                  ),
+                                ),
+                                value: isChecked,
+                                onChanged: (value) {
+                                  setState(() {
+                                    isChecked = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 20),
+                              child: Text(
+                                "맞춤형 광고 선택 동의",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                            Spacer(),
+                            Container(
+                              margin: EdgeInsets.only(right: 20),
+                              child: Icon(
+                                Icons.chevron_right,
+                                color: Color(0xff626262),
+                                size: 30,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              child: Checkbox(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(10)
+                                  ),
+                                ),
+                                value: isChecked,
+                                onChanged: (value) {
+                                  setState(() {
+                                    isChecked = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 20),
+                              child: Text(
+                                "마케팅 정보 수신 선택 동의",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                            Spacer(),
+                            Container(
+                              margin: EdgeInsets.only(right: 20),
+                              child: Icon(
+                                Icons.chevron_right,
+                                color: Color(0xff626262),
+                                size: 30,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Center(
+                Spacer(),
+                Container(
+                  margin: EdgeInsets.only(bottom: 25),
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRouteWithoutAnimation(
                           builder: (context) => SetPattern(
-                          //   userId: widget.userId,
-                          //   password: widget.password,
-                          //   name: widget.name,
+
                           ),
                         ),
                       );
                     },
-                    child: Center(
+                    child: Container(
                           child:Text(
                             '확인',
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 18,
                               color: Colors.white,
                               fontWeight: FontWeight.w800,
                             ),
                           ),
                         ),
                     style: ElevatedButton.styleFrom(
+                      elevation: 0,
                       animationDuration: Duration(days: 10000),
                       splashFactory: NoSplash.splashFactory,
                       fixedSize: Size(
-                          320, 50
+                          MediaQuery.of(context).size.width * 0.85,
+                          50
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
