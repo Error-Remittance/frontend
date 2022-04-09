@@ -6,6 +6,8 @@ import 'package:frontend/register/utils.dart';
 class CheckPattern extends StatelessWidget {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  CheckPattern({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final List<int>? pattern = ModalRoute.of(context)!.settings.arguments as List<int>?;

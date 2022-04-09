@@ -14,7 +14,7 @@ class _AccountListState extends State<AccountListPage> {
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
-  // account list variation
+  // account list variable
   var list = ['쏠편한 입출금 통장', '쏠안편한 입출금 통장'];
 
   @override
@@ -218,24 +218,32 @@ class _AccountListState extends State<AccountListPage> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 20),
-                    padding: EdgeInsets.only(top: 5, bottom: 5),
+                    padding: const EdgeInsets.only(top: 5, bottom: 5),
                     width: MediaQuery.of(context).size.width * 0.80,
                     height: 275,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: const Offset(0, 5), // changes position of shadow
+                        ),
+                      ],
                     ),
                     child: SingleChildScrollView(
-                      physics: ScrollPhysics(),
+                      physics: const ScrollPhysics(),
                       child: Column(
                         children: [
                           ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: 20,
                             itemBuilder: (BuildContext context, int index) {
                               return Container(
-                                margin: EdgeInsets.only(left: 10, right: 10),
+                                margin: const EdgeInsets.only(left: 10, right: 10),
                                 decoration: const BoxDecoration(
                                   border: Border(bottom: BorderSide(color: Colors.black12)),
                                 ),
@@ -247,7 +255,7 @@ class _AccountListState extends State<AccountListPage> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.only(right: 15),
+                                        margin: const EdgeInsets.only(right: 15),
                                         width: 25,
                                         height: 25,
                                         child: Image.asset(
@@ -294,7 +302,7 @@ class _AccountListState extends State<AccountListPage> {
                   ),
                   const Spacer(),
                   Container(
-                    margin: EdgeInsets.only(top: 20),
+                    margin: const EdgeInsets.only(top: 20),
                     child: ElevatedButton(
                       onPressed: () {},
                       child: const Text(
@@ -307,7 +315,7 @@ class _AccountListState extends State<AccountListPage> {
                       ),
                       style: ElevatedButton.styleFrom(
                         splashFactory: NoSplash.splashFactory,
-                        animationDuration: Duration(days: 10000),
+                        animationDuration: const Duration(days: 10000),
                         fixedSize: Size(
                             MediaQuery.of(context).size.width * 0.8,
                             33
