@@ -4,6 +4,8 @@ import 'package:frontend/mainView/sentReturnRequestList.dart';
 
 
 class ConfirmReportReturnRequestPage extends StatelessWidget {
+  const ConfirmReportReturnRequestPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

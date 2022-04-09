@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/mainView/accountList.dart';
 import 'package:frontend/mainView/confirmReportReturnRequest.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AskReportReturnRequestPage extends StatefulWidget {
+  const AskReportReturnRequestPage({Key? key}) : super(key: key);
+
   @override
   _AskReportReturnRequestState createState() => _AskReportReturnRequestState();
 }
@@ -25,10 +26,8 @@ class _AskReportReturnRequestState extends State<AskReportReturnRequestPage> {
             Navigator.push(
               context,
               MaterialPageRouteWithoutAnimation(
-                builder: (context) => AccountListPage(
-                  // userId: widget.userId,
-                  // password: widget.userPassword,
-                  // name: widget.userName,
+                builder: (context) => const AccountListPage(
+
                 ),
               ),
             );

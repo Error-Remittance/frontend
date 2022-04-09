@@ -12,12 +12,12 @@ class CheckPattern extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: Text("Check Pattern"),
+        title: const Text("Check Pattern"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Flexible(
+          const Flexible(
             child: Text(
               "Draw Your pattern",
               style: TextStyle(fontSize: 26),
@@ -37,7 +37,7 @@ class CheckPattern extends StatelessWidget {
                   Navigator.of(context).pop(true);
                 } else {
                   context.replaceSnackbar(
-                    content: Text(
+                    content: const Text(
                       "wrong",
                       style: TextStyle(color: Colors.red),
                     ),
