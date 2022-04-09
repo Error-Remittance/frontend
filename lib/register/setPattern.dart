@@ -13,6 +13,9 @@ class SetPattern extends StatefulWidget {
 }
 
 class _SetPatternState extends State<SetPattern> {
+
+  Widget _to = const AccountListPage();
+  bool _isButtonDisabled = true;
   bool isConfirm = false;
   List<int>? pattern;
 
@@ -31,7 +34,7 @@ class _SetPatternState extends State<SetPattern> {
             Navigator.push(
               context,
               MaterialPageRouteWithoutAnimation(
-                builder: (context) => SignUpIdentificationPage(
+                builder: (context) => const SignUpIdentificationPage(
 
                 ),
               ),
@@ -86,25 +89,23 @@ class _SetPatternState extends State<SetPattern> {
                 selectedColor: Colors.blue,
                 pointRadius: 10,
                 onInputComplete: (List<int> input) {
-                  if (input.length < 4) {
-                    context.replaceSnackbar(
-                      content: const Text(
-                        "최소 4개 이상 선택해 주세요!",
-                        style: TextStyle(color: Colors.red),
-                      ),
-                    );
+                  if (!isConfirm && input.length < 4) {
+                    FlutterDialog("최소 4개 이상 선택해주세요!");
+                    print('under 4 parttern');
                     return;
                   }
                   if (isConfirm) {
                     if (listEquals<int>(input, pattern)) {
-                      Navigator.of(context).pop(pattern);
+                      // Navigator.of(context).pop(pattern);
+                      setState(() {
+                        _isButtonDisabled = false;
+                        if (kDebugMode) {
+                          print('button available');
+                        }
+                      });
                     } else {
-                      context.replaceSnackbar(
-                        content: const Text(
-                          "패턴이 일치하지 않습니다.",
-                          style: TextStyle(color: Colors.red),
-                        ),
-                      );
+                      FlutterDialog("패턴이 일치하지 않습니다.\n다시 설정해주세요.");
+                      print('parttern dismatch');
                       setState(() {
                         pattern = null;
                         isConfirm = false;
@@ -123,12 +124,11 @@ class _SetPatternState extends State<SetPattern> {
               margin: const EdgeInsets.only(top: 20,bottom: 25),
               child: ElevatedButton(
                 onPressed: () {
+                  _isButtonDisabled ? null :
                   Navigator.push(
                     context,
                     MaterialPageRouteWithoutAnimation(
-                      builder: (context) => const AccountListPage(
-
-                      ),
+                      builder: (context) => _to
                     ),
                   );
                 },
@@ -151,7 +151,7 @@ class _SetPatternState extends State<SetPattern> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  primary: const Color(0xffd9d9d9),
+                  primary: _isButtonDisabled ? const Color(0xffD9D9D9) : const Color(0xff64ACF9),
                   side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
                 ),
               ),
@@ -161,6 +161,47 @@ class _SetPatternState extends State<SetPattern> {
       ),
     );
   }
+
+  void FlutterDialog(String text) {
+    showDialog(
+      context: context,
+      //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          // RoundedRectangleBorder - Dialog 화면 모서리 둥글게 조절
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0)),
+          //Dialog Main Title
+          title: Column(
+            children: <Widget>[
+              Text("알림창"),
+            ],
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Center(
+                child: Text(
+                  text,
+                ),
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Center(
+                child: Text("확인"),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      });
+  }
 }
 
 class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
@@ -169,3 +210,4 @@ class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
   @override
   Duration get transitionDuration => const Duration(milliseconds: 0);
 }
+
