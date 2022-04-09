@@ -5,6 +5,8 @@ import 'package:frontend/register/setPattern.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignUpIdentificationPage extends StatefulWidget {
+  const SignUpIdentificationPage({Key? key}) : super(key: key);
+
   @override
   _SignUpIdentificationState createState() => _SignUpIdentificationState();
 }
@@ -37,13 +39,13 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
               Navigator.push(
                 context,
                 MaterialPageRouteWithoutAnimation(
-                  builder: (context) => SignUpStartPage(
+                  builder: (context) => const SignUpStartPage(
 
                   ),
                 ),
               );
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.chevron_left,
               color: Colors.black,
             ),
@@ -53,9 +55,9 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(top: 20,left: 40),
+              margin: const EdgeInsets.only(top: 20,left: 40),
               alignment: Alignment.centerLeft,
-              child: Text(
+              child: const Text(
                 '먼저, 본인 확인부터\n진행해볼게요!',
                 style: TextStyle(
                     fontSize: 20,
@@ -65,23 +67,23 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
             ),
             Container(
               width: MediaQuery.of(context).size.width * 0.8,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(bottom: BorderSide(color: Colors.black38)),
               ),
               child: TextField(
                 controller: nameController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: InputBorder.none,
                   hintText: '이름 입력',
                   contentPadding: EdgeInsets.all(5),
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8*0.45,
                     child: TextField(
                       keyboardType: TextInputType.number,
@@ -89,7 +91,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                         FilteringTextInputFormatter.allow(RegExp('[0-9]')),
                       ],
                       controller: frontRRNController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         hintText: '주민번호 앞 6자리',
                         contentPadding: EdgeInsets.all(5),
                       ),
@@ -98,12 +100,12 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                   Container(
                     alignment: Alignment.center,
                     width: MediaQuery.of(context).size.width * 0.8*0.1,
-                    child: Text(
+                    child: const Text(
                       ' - ',
                       style: TextStyle(fontSize: 30),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8*0.45,
                     child: TextField(
                       keyboardType: TextInputType.number,
@@ -111,7 +113,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                         FilteringTextInputFormatter.allow(RegExp('[0-9]')),
                       ],
                       controller: backRRNController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         hintText: '뒤 7자리',
                         contentPadding: EdgeInsets.all(5),
                       ),
@@ -123,7 +125,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
             ),
             Container(
               width: MediaQuery.of(context).size.width * 0.8,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(bottom: BorderSide(color: Colors.black38)),
               ),
               child: Row(
@@ -138,7 +140,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                         FilteringTextInputFormatter.allow(RegExp('[0-9]')),
                       ],
                       controller: phoneNumberController1,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: "전화번호 입력",
                         contentPadding: EdgeInsets.all(5.0),
@@ -152,7 +154,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                       onPressed: () async {
                         // 인증 요청 로직
                       },
-                      child: Text(
+                      child: const Text(
                         '인증 요청',
                         style: TextStyle(
                           color: Colors.black87,
@@ -169,17 +171,17 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                 ],
               ),
             ),
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: TextField(
                 controller: certificationNumberController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'SMS 인증',
                   contentPadding: EdgeInsets.all(5),
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             IconButton(
               onPressed: showAgreeModal,
               icon: Image.asset('lib/assets/button_accept.png'),
@@ -201,8 +203,8 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
           return SizedBox(
             height: MediaQuery.of(context).size.height * 0.75,
             child: Container(
-            padding: EdgeInsets.only(top: 25),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.only(top: 25),
+            decoration: const BoxDecoration(
               color: Colors.white,
             ),
             child: Column(
@@ -213,15 +215,15 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       border: Border.all(
-                        color: Color(0xff8a93bc),
+                        color: const Color(0xff8a93bc),
                       )
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: 20),
-                        child: Text(
+                        margin: const EdgeInsets.only(left: 20),
+                        child: const Text(
                           '약관에 모두 동의',
                           style: TextStyle(
                             fontSize: 16,
@@ -231,11 +233,11 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                         ),
                       ),
                       // 체크박스 들어갈 자리
-                      Spacer(),
+                      const Spacer(),
                       Container(
-                        margin: EdgeInsets.only(right: 15),
+                        margin: const EdgeInsets.only(right: 15),
                         child: IconButton(
-                          icon: Icon(Icons.check_circle_outline),
+                          icon: const Icon(Icons.check_circle_outline),
                           onPressed: () {},
                         )
                       ),
@@ -248,236 +250,214 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                   margin: EdgeInsets.only(top: 20),
                   child: Column(
                     children: [
-                      Container(
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              child: Checkbox(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(10)
-                                  ),
-                                ),
-                                value: isChecked,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isChecked = value!;
-                                  });
-                                },
+                      Row(
+                        children: <Widget>[
+                          Checkbox(
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(10)
                               ),
                             ),
-                            Container(
-                              margin: EdgeInsets.only(left: 20),
-                              child: Text(
-                                "착송 필수 항목 모두 동의",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                ),
+                            value: isChecked,
+                            onChanged: (value) {
+                              setState(() {
+                                isChecked = value!;
+                              });
+                            },
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 20),
+                            child: const Text(
+                              "착송 필수 항목 모두 동의",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
                               ),
                             ),
-                            Spacer(),
-                            Container(
-                              margin: EdgeInsets.only(right: 20),
-                              child: Icon(
-                                Icons.chevron_right,
-                                color: Color(0xff626262),
-                                size: 30,
-                              ),
+                          ),
+                          Spacer(),
+                          Container(
+                            margin: const EdgeInsets.only(right: 20),
+                            child: const Icon(
+                              Icons.chevron_right,
+                              color: Color(0xff626262),
+                              size: 30,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      Container(
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              child: Checkbox(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(10)
-                                  ),
-                                ),
-                                value: isChecked,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isChecked = value!;
-                                  });
-                                },
+                      Row(
+                        children: <Widget>[
+                          Checkbox(
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(10)
                               ),
                             ),
-                            Container(
-                              margin: EdgeInsets.only(left: 20),
-                              child: Text(
-                                "휴대폰/카드 본인확인 서비스",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                ),
+                            value: isChecked,
+                            onChanged: (value) {
+                              setState(() {
+                                isChecked = value!;
+                              });
+                            },
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 20),
+                            child: const Text(
+                              "휴대폰/카드 본인확인 서비스",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
                               ),
                             ),
-                            Spacer(),
-                            Container(
-                              margin: EdgeInsets.only(right: 20),
-                              child: Icon(
-                                Icons.chevron_right,
-                                color: Color(0xff626262),
-                                size: 30,
-                              ),
+                          ),
+                          const Spacer(),
+                          Container(
+                            margin: const EdgeInsets.only(right: 20),
+                            child: const Icon(
+                              Icons.chevron_right,
+                              color: Color(0xff626262),
+                              size: 30,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      Container(
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              child: Checkbox(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(10)
-                                  ),
-                                ),
-                                value: isChecked,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isChecked = value!;
-                                  });
-                                },
+                      Row(
+                        children: <Widget>[
+                          Checkbox(
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(10)
                               ),
                             ),
-                            Container(
-                              margin: EdgeInsets.only(left: 20),
-                              child: Text(
-                                "문자/이메일 수신 동의",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                ),
+                            value: isChecked,
+                            onChanged: (value) {
+                              setState(() {
+                                isChecked = value!;
+                              });
+                            },
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 20),
+                            child: const Text(
+                              "문자/이메일 수신 동의",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
                               ),
                             ),
-                            Spacer(),
-                            Container(
-                              margin: EdgeInsets.only(right: 20),
-                              child: Icon(
-                                Icons.chevron_right,
-                                color: Color(0xff626262),
-                                size: 30,
-                              ),
+                          ),
+                          const Spacer(),
+                          Container(
+                            margin: const EdgeInsets.only(right: 20),
+                            child: const Icon(
+                              Icons.chevron_right,
+                              color: Color(0xff626262),
+                              size: 30,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      Container(
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              child: Checkbox(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(10)
-                                  ),
-                                ),
-                                value: isChecked,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isChecked = value!;
-                                  });
-                                },
+                      Row(
+                        children: <Widget>[
+                          Checkbox(
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(10)
                               ),
                             ),
-                            Container(
-                              margin: EdgeInsets.only(left: 20),
-                              child: Text(
-                                "맞춤형 광고 선택 동의",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                ),
+                            value: isChecked,
+                            onChanged: (value) {
+                              setState(() {
+                                isChecked = value!;
+                              });
+                            },
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 20),
+                            child: const Text(
+                              "맞춤형 광고 선택 동의",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
                               ),
                             ),
-                            Spacer(),
-                            Container(
-                              margin: EdgeInsets.only(right: 20),
-                              child: Icon(
-                                Icons.chevron_right,
-                                color: Color(0xff626262),
-                                size: 30,
-                              ),
+                          ),
+                          const Spacer(),
+                          Container(
+                            margin: const EdgeInsets.only(right: 20),
+                            child: const Icon(
+                              Icons.chevron_right,
+                              color: Color(0xff626262),
+                              size: 30,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      Container(
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              child: Checkbox(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(10)
-                                  ),
-                                ),
-                                value: isChecked,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isChecked = value!;
-                                  });
-                                },
+                      Row(
+                        children: <Widget>[
+                          Checkbox(
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(10)
                               ),
                             ),
-                            Container(
-                              margin: EdgeInsets.only(left: 20),
-                              child: Text(
-                                "마케팅 정보 수신 선택 동의",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                ),
+                            value: isChecked,
+                            onChanged: (value) {
+                              setState(() {
+                                isChecked = value!;
+                              });
+                            },
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 20),
+                            child: const Text(
+                              "마케팅 정보 수신 선택 동의",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
                               ),
                             ),
-                            Spacer(),
-                            Container(
-                              margin: EdgeInsets.only(right: 20),
-                              child: Icon(
-                                Icons.chevron_right,
-                                color: Color(0xff626262),
-                                size: 30,
-                              ),
+                          ),
+                          const Spacer(),
+                          Container(
+                            margin: const EdgeInsets.only(right: 20),
+                            child: const Icon(
+                              Icons.chevron_right,
+                              color: Color(0xff626262),
+                              size: 30,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Container(
-                  margin: EdgeInsets.only(bottom: 25),
+                  margin: const EdgeInsets.only(bottom: 25),
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRouteWithoutAnimation(
-                          builder: (context) => SetPattern(
+                          builder: (context) => const SetPattern(
 
                           ),
                         ),
                       );
                     },
-                    child: Container(
-                          child:Text(
-                            '확인',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w800,
-                            ),
-                          ),
-                        ),
+                    child: const Text(
+                      '확인',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      animationDuration: Duration(days: 10000),
+                      animationDuration: const Duration(days: 10000),
                       splashFactory: NoSplash.splashFactory,
                       fixedSize: Size(
                           MediaQuery.of(context).size.width * 0.85,
@@ -486,8 +466,8 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      primary: Color(0xffd9d9d9),
-                      side: BorderSide(width:1, color: Color(0xff8a9cb3)),
+                      primary: const Color(0xffd9d9d9),
+                      side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
                     ),
                   ),
                 ),

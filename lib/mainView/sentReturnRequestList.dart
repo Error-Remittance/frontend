@@ -178,14 +178,8 @@ class _SentReturnRequestListState extends State<SentReturnRequestListPage> {
                                                   MaterialPageRouteWithoutAnimation(
                                                     builder: (context) =>
                                                          AskReportReturnRequestPage(
-                                                    //       userId: widget.userId,
-                                                    //       userPassword:
-                                                    //       widget.password,
-                                                    //       userName: widget.name,
-                                                    //       reportedUserName: widget.returnRequests!.returnRequests[index].receivedUserName,
-                                                    //       transactionTime: widget.returnRequests!.returnRequests[index].transactionTime,
-                                                    //       returnRequestId: widget.returnRequests!.returnRequests[index].id,
-                                                        ),
+
+                                                         ),
                                                   ),
                                                 );
                                               },
