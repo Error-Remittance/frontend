@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/register/patternLock/patternLock.dart';
-import 'package:frontend/register/utils.dart';
+// import 'package:frontend/register/utils.dart';
 import 'package:frontend/register/signUpIdentification.dart';
 import 'package:frontend/mainView/accountList.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:frontend/register/localAuth/fingerPrint.dart';
 
 class SetPattern extends StatefulWidget {
   const SetPattern({Key? key}) : super(key: key);
@@ -125,11 +127,15 @@ class _SetPatternState extends State<SetPattern> {
               child: ElevatedButton(
                 onPressed: () {
                   _isButtonDisabled ? null :
-                  Navigator.push(
-                    context,
-                    MaterialPageRouteWithoutAnimation(
-                      builder: (context) => _to
-                    ),
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRouteWithoutAnimation(
+                  //     builder: (context) => _to
+                  //   ),
+                  // );
+                  showMaterialModalBottomSheet(
+                    context: context,
+                    builder: (context) => BottomModal(),
                   );
                 },
                 child: const Text(
@@ -162,6 +168,120 @@ class _SetPatternState extends State<SetPattern> {
     );
   }
 
+
+  Widget BottomModal() {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height*0.6,
+      child: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 20, left: 20),
+            alignment: Alignment.centerLeft,
+            child: const Text(
+              "혹시 지문이 편하신가요?",
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 5, left: 20),
+            alignment: Alignment.centerLeft,
+            child: const Text(
+              "지문 인증만 하시면 돼요!",
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 40, bottom: 20),
+            child: const Image(
+              width: 200,
+              height: 200,
+              image: AssetImage('lib/assets/finger_print.png'),
+            ),
+          ),
+          const Spacer(),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            margin: const EdgeInsets.only(bottom: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRouteWithoutAnimation(
+                          builder: (context) => _to
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    '나중에',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    animationDuration: const Duration(days: 10000),
+                    splashFactory: NoSplash.splashFactory,
+                    fixedSize: Size(
+                        MediaQuery.of(context).size.width * 0.4,
+                        50
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    primary: const Color(0xff64ACF9),
+                    side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
+                  ),
+                ),
+                const SizedBox(width: 20,),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRouteWithoutAnimation(
+                          builder: (context) => FingerPrint()
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    '지문 인증',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    animationDuration: const Duration(days: 10000),
+                    splashFactory: NoSplash.splashFactory,
+                    fixedSize: Size(
+                        MediaQuery.of(context).size.width * 0.4,
+                        50
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    primary: const Color(0xffD9D9D9),
+                    side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   void FlutterDialog(String text) {
     showDialog(
       context: context,
@@ -174,7 +294,7 @@ class _SetPatternState extends State<SetPattern> {
               borderRadius: BorderRadius.circular(10.0)),
           //Dialog Main Title
           title: Column(
-            children: <Widget>[
+            children: const <Widget>[
               Text("알림창"),
             ],
           ),

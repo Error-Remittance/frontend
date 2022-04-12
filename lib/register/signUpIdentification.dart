@@ -200,281 +200,285 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
         context: context,
         isScrollControlled: true,
         builder: (BuildContext context) {
-          return SizedBox(
-            height: MediaQuery.of(context).size.height * 0.75,
-            child: Container(
-            padding: const EdgeInsets.only(top: 25),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-            ),
-            child: Column(
-              children: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.85,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(
-                        color: const Color(0xff8a93bc),
-                      )
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(left: 20),
-                        child: const Text(
-                          '약관에 모두 동의',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w800,
+          return StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+                return SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.75,
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 25),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.85,
+                          height: 60,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(
+                                color: const Color(0xff8a93bc),
+                              )
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(left: 20),
+                                child: const Text(
+                                  '약관에 모두 동의',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                              ),
+                              // 체크박스 들어갈 자리
+                              const Spacer(),
+                              Container(
+                                  margin: const EdgeInsets.only(right: 15),
+                                  child: IconButton(
+                                    icon: const Icon(Icons.check_circle_outline),
+                                    onPressed: () {},
+                                  )
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                      // 체크박스 들어갈 자리
-                      const Spacer(),
-                      Container(
-                        margin: const EdgeInsets.only(right: 15),
-                        child: IconButton(
-                          icon: const Icon(Icons.check_circle_outline),
-                          onPressed: () {},
-                        )
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  width: MediaQuery.of(context).size.width * 0.85,
-                  margin: EdgeInsets.only(top: 20),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: <Widget>[
-                          Checkbox(
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(10)
+                        Container(
+                          alignment: Alignment.center,
+                          width: MediaQuery.of(context).size.width * 0.85,
+                          margin: EdgeInsets.only(top: 20),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: <Widget>[
+                                  Checkbox(
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10)
+                                      ),
+                                    ),
+                                    value: isChecked,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isChecked = value!;
+                                      });
+                                    },
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.only(left: 20),
+                                    child: const Text(
+                                      "착송 필수 항목 모두 동의",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Container(
+                                    margin: const EdgeInsets.only(right: 20),
+                                    child: const Icon(
+                                      Icons.chevron_right,
+                                      color: Color(0xff626262),
+                                      size: 30,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                            value: isChecked,
-                            onChanged: (value) {
-                              setState(() {
-                                isChecked = value!;
-                              });
-                            },
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(left: 20),
-                            child: const Text(
-                              "착송 필수 항목 모두 동의",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
+                              Row(
+                                children: <Widget>[
+                                  Checkbox(
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10)
+                                      ),
+                                    ),
+                                    value: isChecked,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isChecked = value!;
+                                      });
+                                    },
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.only(left: 20),
+                                    child: const Text(
+                                      "휴대폰/카드 본인확인 서비스",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                  Container(
+                                    margin: const EdgeInsets.only(right: 20),
+                                    child: const Icon(
+                                      Icons.chevron_right,
+                                      color: Color(0xff626262),
+                                      size: 30,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ),
-                          Spacer(),
-                          Container(
-                            margin: const EdgeInsets.only(right: 20),
-                            child: const Icon(
-                              Icons.chevron_right,
-                              color: Color(0xff626262),
-                              size: 30,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Checkbox(
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(10)
+                              Row(
+                                children: <Widget>[
+                                  Checkbox(
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10)
+                                      ),
+                                    ),
+                                    value: isChecked,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isChecked = value!;
+                                      });
+                                    },
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.only(left: 20),
+                                    child: const Text(
+                                      "문자/이메일 수신 동의",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                  Container(
+                                    margin: const EdgeInsets.only(right: 20),
+                                    child: const Icon(
+                                      Icons.chevron_right,
+                                      color: Color(0xff626262),
+                                      size: 30,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                            value: isChecked,
-                            onChanged: (value) {
-                              setState(() {
-                                isChecked = value!;
-                              });
-                            },
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(left: 20),
-                            child: const Text(
-                              "휴대폰/카드 본인확인 서비스",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
+                              Row(
+                                children: <Widget>[
+                                  Checkbox(
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10)
+                                      ),
+                                    ),
+                                    value: isChecked,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isChecked = value!;
+                                      });
+                                    },
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.only(left: 20),
+                                    child: const Text(
+                                      "맞춤형 광고 선택 동의",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                  Container(
+                                    margin: const EdgeInsets.only(right: 20),
+                                    child: const Icon(
+                                      Icons.chevron_right,
+                                      color: Color(0xff626262),
+                                      size: 30,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ),
-                          const Spacer(),
-                          Container(
-                            margin: const EdgeInsets.only(right: 20),
-                            child: const Icon(
-                              Icons.chevron_right,
-                              color: Color(0xff626262),
-                              size: 30,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Checkbox(
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(10)
+                              Row(
+                                children: <Widget>[
+                                  Checkbox(
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10)
+                                      ),
+                                    ),
+                                    value: isChecked,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isChecked = value!;
+                                      });
+                                    },
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.only(left: 20),
+                                    child: const Text(
+                                      "마케팅 정보 수신 선택 동의",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                  Container(
+                                    margin: const EdgeInsets.only(right: 20),
+                                    child: const Icon(
+                                      Icons.chevron_right,
+                                      color: Color(0xff626262),
+                                      size: 30,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                            value: isChecked,
-                            onChanged: (value) {
-                              setState(() {
-                                isChecked = value!;
-                              });
-                            },
+                            ],
                           ),
-                          Container(
-                            margin: const EdgeInsets.only(left: 20),
-                            child: const Text(
-                              "문자/이메일 수신 동의",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                          const Spacer(),
-                          Container(
-                            margin: const EdgeInsets.only(right: 20),
-                            child: const Icon(
-                              Icons.chevron_right,
-                              color: Color(0xff626262),
-                              size: 30,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Checkbox(
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(10)
-                              ),
-                            ),
-                            value: isChecked,
-                            onChanged: (value) {
-                              setState(() {
-                                isChecked = value!;
-                              });
-                            },
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(left: 20),
-                            child: const Text(
-                              "맞춤형 광고 선택 동의",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                          const Spacer(),
-                          Container(
-                            margin: const EdgeInsets.only(right: 20),
-                            child: const Icon(
-                              Icons.chevron_right,
-                              color: Color(0xff626262),
-                              size: 30,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Checkbox(
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(10)
-                              ),
-                            ),
-                            value: isChecked,
-                            onChanged: (value) {
-                              setState(() {
-                                isChecked = value!;
-                              });
-                            },
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(left: 20),
-                            child: const Text(
-                              "마케팅 정보 수신 선택 동의",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                          const Spacer(),
-                          Container(
-                            margin: const EdgeInsets.only(right: 20),
-                            child: const Icon(
-                              Icons.chevron_right,
-                              color: Color(0xff626262),
-                              size: 30,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const Spacer(),
-                Container(
-                  margin: const EdgeInsets.only(bottom: 25),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRouteWithoutAnimation(
-                          builder: (context) => const SetPattern(
+                        ),
+                        const Spacer(),
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 25),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRouteWithoutAnimation(
+                                  builder: (context) => const SetPattern(
 
+                                  ),
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              '확인',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              animationDuration: const Duration(days: 10000),
+                              splashFactory: NoSplash.splashFactory,
+                              fixedSize: Size(
+                                  MediaQuery.of(context).size.width * 0.85,
+                                  50
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              primary: const Color(0xffd9d9d9),
+                              side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
+                            ),
                           ),
                         ),
-                      );
-                    },
-                    child: const Text(
-                      '확인',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      animationDuration: const Duration(days: 10000),
-                      splashFactory: NoSplash.splashFactory,
-                      fixedSize: Size(
-                          MediaQuery.of(context).size.width * 0.85,
-                          50
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      primary: const Color(0xffd9d9d9),
-                      side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
+                      ],
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-        );
+                );
+              }
+          );
       },
     );
   }
