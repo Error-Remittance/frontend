@@ -127,12 +127,6 @@ class _SetPatternState extends State<SetPattern> {
               child: ElevatedButton(
                 onPressed: () {
                   _isButtonDisabled ? null :
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRouteWithoutAnimation(
-                  //     builder: (context) => _to
-                  //   ),
-                  // );
                   showMaterialModalBottomSheet(
                     context: context,
                     builder: (context) => BottomModal(),

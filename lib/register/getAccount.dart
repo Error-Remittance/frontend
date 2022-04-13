@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/register/inputAccountNumber.dart';
 
 class GetAccount extends StatefulWidget {
   const GetAccount({Key? key}) : super(key: key);
@@ -32,11 +33,33 @@ class _GetAccountState extends State<GetAccount> {
     "lib/assets/accounts/Suhyup_bank.png",
   ];
 
+  final accountName = [
+    "NH농협은행",
+    "우리은행",
+    "신한은행",
+    "KB국민은행",
+    "하나은행",
+    "외환은행",
+    "IBK기업은행",
+    "카카오뱅크",
+    "새마을금고",
+    "부산은행",
+    "경남은행",
+    "광주은행",
+    "전북은행",
+    "신협은행",
+    "SC제일은행",
+    "KDB산업은행",
+    "대구은행",
+    "제주은행",
+    "우체국",
+    "수협은행",
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xffEAEAEA),
       appBar: AppBar(
         backgroundColor: Colors.white, // Appbar 배경색
         elevation: 0.0, // Appbar 그림자
@@ -52,10 +75,12 @@ class _GetAccountState extends State<GetAccount> {
        child: Column(
          children: [
            Container(
+             color: Colors.white,
              width: MediaQuery.of(context).size.width,
-             height: MediaQuery.of(context).size.height*0.1,
+             height: MediaQuery.of(context).size.height*0.15,
              alignment: Alignment.center,
-             margin: EdgeInsets.only(top: 10, bottom: 20),
+             margin: EdgeInsets.only(bottom: 20),
+             padding: EdgeInsets.only(top: 10, bottom: 20),
              child: const Text(
                "드디어 마지막 단계에요!\n계좌를 연결해 '착송'해주시면 됩니다",
                style: TextStyle(
@@ -66,10 +91,9 @@ class _GetAccountState extends State<GetAccount> {
            ),
            SingleChildScrollView(
              child: Container(
-               padding: EdgeInsets.only(top: 25, left: 20, right: 20),
+               padding: EdgeInsets.only(top: 10, left: 20, right: 20),
                width: MediaQuery.of(context).size.width,
-               height: MediaQuery.of(context).size.height*0.71 ,
-               color: Colors.black12,
+               height: MediaQuery.of(context).size.height*0.65,
                child: GridView.builder(
                  itemCount: accountItem.length,
                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -82,8 +106,18 @@ class _GetAccountState extends State<GetAccount> {
                    return Container(
                      child: Column(
                        children: [
-                         Image(
-                           image: AssetImage(accountItem[index]),
+                         GestureDetector(
+                           onTap: () {
+                             Navigator.push(
+                               context,
+                               MaterialPageRouteWithoutAnimation(
+                                 builder: (context) => InputAccountNumber(text: accountName[index]),
+                               ),
+                             );
+                           },
+                           child: Image(
+                             image: AssetImage(accountItem[index]),
+                           ),
                          ),
                        ],
                      ),
