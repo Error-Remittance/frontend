@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:frontend/register/patternLock/patternLock.dart';
 // import 'package:frontend/register/utils.dart';
 import 'package:frontend/register/signUpIdentification.dart';
-import 'package:frontend/mainView/accountList.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:frontend/register/localAuth/fingerPrint.dart';
+import 'package:frontend/register/getAccount.dart';
 
 class SetPattern extends StatefulWidget {
   const SetPattern({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class SetPattern extends StatefulWidget {
 
 class _SetPatternState extends State<SetPattern> {
 
-  Widget _to = const AccountListPage();
+  // Widget _to = const AccountListPage();
   bool _isButtonDisabled = true;
   bool isConfirm = false;
   List<int>? pattern;
@@ -214,7 +214,7 @@ class _SetPatternState extends State<SetPattern> {
                     Navigator.push(
                       context,
                       MaterialPageRouteWithoutAnimation(
-                          builder: (context) => _to
+                          builder: (context) => GetAccount()
                       ),
                     );
                   },
