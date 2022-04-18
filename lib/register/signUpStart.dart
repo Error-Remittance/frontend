@@ -26,7 +26,7 @@ class _SignUpStartState extends State<SignUpStartPage> {
             children: <Widget>[
               Container(
                   width: MediaQuery.of(context).size.width * 0.85,
-                  height: MediaQuery.of(context).size.height * 0.7,
+                  height: MediaQuery.of(context).size.height * 0.6,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(color: const Color(0xff8a93bc)),
@@ -66,7 +66,7 @@ class _SignUpStartState extends State<SignUpStartPage> {
                 child: SizedBox(),
               ),
               Container(
-                margin: const EdgeInsets.only(bottom: 25),
+                margin: const EdgeInsets.only(bottom: 15),
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
@@ -100,6 +100,48 @@ class _SignUpStartState extends State<SignUpStartPage> {
                       ),
                       const Spacer(),
                       const Icon(Icons.chevron_right, color: Colors.black,),
+                    ],
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    animationDuration: const Duration(days: 10000),
+                    splashFactory: NoSplash.splashFactory,
+                    fixedSize: Size(
+                        MediaQuery.of(context).size.width * 0.85,
+                        63
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    primary: Colors.white,
+                    side: const BorderSide(width:1, color: Color(0xff8a93bc)),
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 25),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const [
+                      Icon(
+                        Icons.login,
+                        color: Colors.black,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        '    로그인',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      Spacer(),
+                      Icon(Icons.chevron_right, color: Colors.black,),
                     ],
                   ),
                   style: ElevatedButton.styleFrom(
