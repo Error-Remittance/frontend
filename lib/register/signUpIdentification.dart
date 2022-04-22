@@ -24,7 +24,12 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
   String authMessage = "인증 요청을 해주세요.";
   late String verificationId;
 
-  bool isChecked = false;
+  bool isAllChecked = false;
+  bool isChecked1 = false;
+  bool isChecked2 = false;
+  bool isChecked3 = false;
+  bool isChecked4 = false;
+  bool isChecked5 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -147,7 +152,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8*0.3,
                     height: 27,
                     child: ElevatedButton(
@@ -238,10 +243,32 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                               const Spacer(),
                               Container(
                                   margin: const EdgeInsets.only(right: 15),
-                                  child: IconButton(
-                                    icon: const Icon(Icons.check_circle_outline),
-                                    onPressed: () {},
-                                  )
+                                  child: Checkbox(
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10)
+                                      ),
+                                    ),
+                                    value: isAllChecked,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isAllChecked = value!;
+                                        if(isAllChecked) {
+                                          isChecked1 = true;
+                                          isChecked2 = true;
+                                          isChecked3 = true;
+                                          isChecked4 = true;
+                                          isChecked5 = true;
+                                        } else {
+                                          isChecked1 = false;
+                                          isChecked2 = false;
+                                          isChecked3 = false;
+                                          isChecked4 = false;
+                                          isChecked5 = false;
+                                        }
+                                      });
+                                    },
+                                  ),
                               ),
                             ],
                           ),
@@ -249,7 +276,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                         Container(
                           alignment: Alignment.center,
                           width: MediaQuery.of(context).size.width * 0.85,
-                          margin: EdgeInsets.only(top: 20),
+                          margin: const EdgeInsets.only(top: 20),
                           child: Column(
                             children: [
                               Row(
@@ -260,10 +287,16 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                                           Radius.circular(10)
                                       ),
                                     ),
-                                    value: isChecked,
+                                    value: isChecked1,
                                     onChanged: (value) {
                                       setState(() {
-                                        isChecked = value!;
+                                        isChecked1 = value!;
+                                        if(!isChecked1) {
+                                          isAllChecked = false;
+                                        }
+                                        if(isChecked1 == true && isChecked2 == true && isChecked3 == true && isChecked4 == true && isChecked5 == true) {
+                                          isAllChecked = true;
+                                        }
                                       });
                                     },
                                   ),
@@ -277,7 +310,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                                       ),
                                     ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   Container(
                                     margin: const EdgeInsets.only(right: 20),
                                     child: const Icon(
@@ -296,10 +329,16 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                                           Radius.circular(10)
                                       ),
                                     ),
-                                    value: isChecked,
+                                    value: isChecked2,
                                     onChanged: (value) {
                                       setState(() {
-                                        isChecked = value!;
+                                        isChecked2 = value!;
+                                        if(!isChecked2) {
+                                          isAllChecked = false;
+                                        }
+                                        if(isChecked1 == true && isChecked2 == true && isChecked3 == true && isChecked4 == true && isChecked5 == true) {
+                                          isAllChecked = true;
+                                        }
                                       });
                                     },
                                   ),
@@ -332,10 +371,16 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                                           Radius.circular(10)
                                       ),
                                     ),
-                                    value: isChecked,
+                                    value: isChecked3,
                                     onChanged: (value) {
                                       setState(() {
-                                        isChecked = value!;
+                                        isChecked3 = value!;
+                                        if(!isChecked3) {
+                                          isAllChecked = false;
+                                        }
+                                        if(isChecked1 == true && isChecked2 == true && isChecked3 == true && isChecked4 == true && isChecked5 == true) {
+                                          isAllChecked = true;
+                                        }
                                       });
                                     },
                                   ),
@@ -368,10 +413,16 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                                           Radius.circular(10)
                                       ),
                                     ),
-                                    value: isChecked,
+                                    value: isChecked4,
                                     onChanged: (value) {
                                       setState(() {
-                                        isChecked = value!;
+                                        isChecked4 = value!;
+                                        if(!isChecked4) {
+                                          isAllChecked = false;
+                                        }
+                                        if(isChecked1 == true && isChecked2 == true && isChecked3 == true && isChecked4 == true && isChecked5 == true) {
+                                          isAllChecked = true;
+                                        }
                                       });
                                     },
                                   ),
@@ -404,10 +455,16 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                                           Radius.circular(10)
                                       ),
                                     ),
-                                    value: isChecked,
+                                    value: isChecked5,
                                     onChanged: (value) {
                                       setState(() {
-                                        isChecked = value!;
+                                        isChecked5 = value!;
+                                        if(!isChecked5) {
+                                          isAllChecked = false;
+                                        }
+                                        if(isChecked1 == true && isChecked2 == true && isChecked3 == true && isChecked4 == true && isChecked5 == true) {
+                                          isAllChecked = true;
+                                        }
                                       });
                                     },
                                   ),
@@ -440,6 +497,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                           margin: const EdgeInsets.only(bottom: 25),
                           child: ElevatedButton(
                             onPressed: () {
+                              isChecked1 == true && isChecked2 == true && isChecked3 == true ?
                               Navigator.push(
                                 context,
                                 MaterialPageRouteWithoutAnimation(
@@ -447,7 +505,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
 
                                   ),
                                 ),
-                              );
+                              ) : null;
                             },
                             child: const Text(
                               '확인',
@@ -468,7 +526,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              primary: const Color(0xffd9d9d9),
+                              primary: isChecked1 == true && isChecked2 == true && isChecked3 == true ? const Color(0xff64ACF9) : const Color(0xffd9d9d9),
                               side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
                             ),
                           ),

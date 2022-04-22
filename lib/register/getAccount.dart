@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:frontend/register/inputAccountNumber.dart';
 
 class GetAccount extends StatefulWidget {
-  const GetAccount({Key? key}) : super(key: key);
+  final String text;
+  final int tag;
+  const GetAccount({Key? key, required this.text, required this.tag}) : super(key: key);
 
   @override
   _GetAccountState createState() => _GetAccountState();
@@ -59,7 +61,7 @@ class _GetAccountState extends State<GetAccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffEAEAEA),
+      backgroundColor: const Color(0xffEAEAEA),
       appBar: AppBar(
         backgroundColor: Colors.white, // Appbar 배경색
         elevation: 0.0, // Appbar 그림자
@@ -79,11 +81,11 @@ class _GetAccountState extends State<GetAccount> {
              width: MediaQuery.of(context).size.width,
              height: MediaQuery.of(context).size.height*0.15,
              alignment: Alignment.center,
-             margin: EdgeInsets.only(bottom: 20),
-             padding: EdgeInsets.only(top: 10, bottom: 20),
-             child: const Text(
-               "드디어 마지막 단계에요!\n계좌를 연결해 '착송'해주시면 됩니다",
-               style: TextStyle(
+             margin: const EdgeInsets.only(bottom: 20),
+             padding: const EdgeInsets.only(top: 10, bottom: 20),
+             child: Text(
+               widget.text,
+               style: const TextStyle(
                    fontSize: 24,
                    fontWeight: FontWeight.w800,
                ),
@@ -91,36 +93,34 @@ class _GetAccountState extends State<GetAccount> {
            ),
            SingleChildScrollView(
              child: Container(
-               padding: EdgeInsets.only(top: 10, left: 20, right: 20),
+               padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
                width: MediaQuery.of(context).size.width,
                height: MediaQuery.of(context).size.height*0.65,
                child: GridView.builder(
                  itemCount: accountItem.length,
-                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                    crossAxisCount: 3, //1 개의 행에 보여줄 item 개수
                    mainAxisSpacing: 0, //수평 Padding
                    crossAxisSpacing: 0, //수직 Padding
                  ),
                  itemBuilder: (BuildContext context, int index) {
                    //item 의 반목문 항목 형성
-                   return Container(
-                     child: Column(
-                       children: [
-                         GestureDetector(
-                           onTap: () {
-                             Navigator.push(
-                               context,
-                               MaterialPageRouteWithoutAnimation(
-                                 builder: (context) => InputAccountNumber(text: accountName[index]),
-                               ),
-                             );
-                           },
-                           child: Image(
-                             image: AssetImage(accountItem[index]),
-                           ),
+                   return Column(
+                     children: [
+                       GestureDetector(
+                         onTap: () {
+                           Navigator.push(
+                             context,
+                             MaterialPageRouteWithoutAnimation(
+                               builder: (context) => InputAccountNumber(text: accountName[index], tag: widget.tag,),
+                             ),
+                           );
+                         },
+                         child: Image(
+                           image: AssetImage(accountItem[index]),
                          ),
-                       ],
-                     ),
+                       ),
+                     ],
                    );
                  },
                ),

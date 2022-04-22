@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/register/checkPattern.dart';
 import 'package:frontend/mainView/accountList.dart';
 
 class InputAccountNumber extends StatefulWidget {
   final String text;
-  const InputAccountNumber({Key? key, required this.text}) : super(key: key);
+  final int tag;
+  const InputAccountNumber({Key? key, required this.text, required this.tag}) : super(key: key);
 
   @override
   _InputAccountNumberState createState() => _InputAccountNumberState();
@@ -21,7 +23,9 @@ class _InputAccountNumberState extends State<InputAccountNumber> {
         backgroundColor: Colors.white, // Appbar 배경색
         elevation: 0.0, // Appbar 그림자
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: const Icon(
             Icons.chevron_left,
             color: Colors.black,
@@ -35,10 +39,10 @@ class _InputAccountNumberState extends State<InputAccountNumber> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height*0.1,
               alignment: Alignment.centerLeft,
-              margin: EdgeInsets.only(top: 10, bottom: 20, left: 25),
+              margin: const EdgeInsets.only(top: 10, bottom: 20, left: 25),
               child: Text(
                 "${widget.text} 계좌번호를\n입력해주세요",
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w800,
                 ),
@@ -64,7 +68,7 @@ class _InputAccountNumberState extends State<InputAccountNumber> {
                 Navigator.push(
                   context,
                   MaterialPageRouteWithoutAnimation(
-                    builder: (context) => AccountListPage(),
+                    builder: (context) => widget.tag == 0 ? CheckPattern() : AccountListPage(),
                   ),
                 );
               },

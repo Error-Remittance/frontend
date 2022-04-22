@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/register/patternLock/patternLock.dart';
-// import 'package:frontend/register/utils.dart';
+import 'package:frontend/register/utils.dart';
 import 'package:frontend/register/signUpIdentification.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:frontend/register/localAuth/fingerPrint.dart';
@@ -20,6 +20,9 @@ class _SetPatternState extends State<SetPattern> {
   bool _isButtonDisabled = true;
   bool isConfirm = false;
   List<int>? pattern;
+
+  String _signupText = "드디어 마지막 단계에요!\n계좌를 연결해 '착송'해주시면 됩니다";
+  int _signupTag = 0;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -208,7 +211,7 @@ class _SetPatternState extends State<SetPattern> {
                     Navigator.push(
                       context,
                       MaterialPageRouteWithoutAnimation(
-                          builder: (context) => GetAccount()
+                          builder: (context) => GetAccount(text: _signupText, tag: _signupTag)
                       ),
                     );
                   },
