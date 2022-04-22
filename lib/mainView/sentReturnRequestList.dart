@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:frontend/mainView/accountList.dart';
 import 'package:frontend/mainView/askReportReturnRequest.dart';
 
@@ -134,81 +133,71 @@ class _SentReturnRequestListState extends State<SentReturnRequestListPage> {
                                         ],
                                       ),
                                       children: [
-                                        Container(
-                                          height: 50,
-                                          color: const Color(0xFFDEECFF),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
-                                            children: [
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                              Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: const [
-                                                  Text(
-                                                    '2022.02.05 토요일',
-                                                    style: TextStyle(
-                                                      color: Color(0xFFA7A7A7),
-                                                      fontSize: 12,
-                                                      fontWeight: FontWeight.w400,
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Text(
-                                                    '10,000 원',
-                                                    style: TextStyle(
-                                                      color: Color(0xFF3A3A3A),
-                                                      fontSize: 15,
-                                                      fontWeight: FontWeight.w800,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              const Spacer(),
-                                              Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                crossAxisAlignment: CrossAxisAlignment.center,
-                                                children: [
-                                                  Container(
-                                                    margin: const EdgeInsets.only(right: 10),
-                                                    height: 33,
-                                                    width: 33,
-                                                    child: ElevatedButton(
-                                                      onPressed: () {
-                                                        Navigator.push(
-                                                          context,
-                                                          MaterialPageRouteWithoutAnimation(
-                                                            builder: (context) => const AskReportReturnRequestPage(
+                                        GestureDetector(
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRouteWithoutAnimation(
+                                                builder: (context) => const AskReportReturnRequestPage(
 
-                                                                ),
-                                                          ),
-                                                        );
-                                                      },
-                                                      child:
-                                                      Image.asset(
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Container(
+                                            height: 50,
+                                            color: const Color(0xFFDEECFF),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              children: [
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                                Column(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: const [
+                                                    Text(
+                                                      '2022.02.05 토요일',
+                                                      style: TextStyle(
+                                                        color: Color(0xFFA7A7A7),
+                                                        fontSize: 12,
+                                                        fontWeight: FontWeight.w400,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    Text(
+                                                      '10,000 원',
+                                                      style: TextStyle(
+                                                        color: Color(0xFF3A3A3A),
+                                                        fontSize: 15,
+                                                        fontWeight: FontWeight.w800,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                const Spacer(),
+                                                Column(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      margin: const EdgeInsets.only(right: 10),
+                                                      height: 33,
+                                                      width: 33,
+                                                      child: Image.asset(
                                                         // 'lib/assets/icons/report_blue.png'
                                                         'lib/assets/icons/report_red.png',
                                                       ),
-                                                      style: ElevatedButton.styleFrom(
-                                                        elevation: 0,
-                                                        splashFactory: NoSplash.splashFactory,
-                                                        onPrimary: Colors.transparent,
-                                                        primary: const Color(0xFFDEECFF),
-                                                        // shadowColor: Colors.transparent,
-                                                        padding: const EdgeInsets.all(0.5),
-                                                        // onSurface: Colors.transparent,
-                                                      ),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                        ),
+                                        )
                                       ],
                                     ),
                                   ),

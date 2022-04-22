@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/mainView/sentReturnRequestList.dart';
 import 'package:frontend/mainView/reportList.dart';
+import 'package:frontend/register/getAccount.dart';
 import 'package:page_transition/page_transition.dart';
 
 class AccountListPage extends StatefulWidget {
@@ -16,6 +17,10 @@ class _AccountListState extends State<AccountListPage> {
 
   // account list variable
   var list = ['쏠편한 입출금 통장', '쏠안편한 입출금 통장'];
+
+  // add account
+  String addAccountText = "계좌를 추가하셔서\n더 다양한 거래를 진행해봐요!";
+  int addAccountTag = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -304,7 +309,14 @@ class _AccountListState extends State<AccountListPage> {
                   Container(
                     margin: const EdgeInsets.only(top: 20),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRouteWithoutAnimation(
+                              builder: (context) => GetAccount(text: addAccountText, tag: addAccountTag)
+                          ),
+                        );
+                      },
                       child: const Text(
                         '+',
                         style: TextStyle(

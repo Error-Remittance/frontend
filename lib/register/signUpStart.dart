@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/register/signUpIdentification.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:frontend/register/checkPattern.dart';
 
 class SignUpStartPage extends StatefulWidget {
   const SignUpStartPage({Key? key}) : super(key: key);
@@ -121,7 +121,16 @@ class _SignUpStartState extends State<SignUpStartPage> {
               Container(
                 margin: const EdgeInsets.only(bottom: 25),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRouteWithoutAnimation(
+                        builder: (context) => CheckPattern(
+
+                        ),
+                      ),
+                    );
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: const [
