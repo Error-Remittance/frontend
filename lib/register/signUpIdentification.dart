@@ -25,11 +25,6 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
   late String verificationId;
 
   bool isAllChecked = false;
-  bool isChecked1 = false;
-  bool isChecked2 = false;
-  bool isChecked3 = false;
-  bool isChecked4 = false;
-  bool isChecked5 = false;
 
   List<String> terms = [
     "착송 필수 항목 모두 동의",

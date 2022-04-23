@@ -33,10 +33,10 @@ class ConfirmReportReturnRequestPage extends StatelessWidget {
           },
           child: Column(
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               height: 200,
             ),
-            Text(
+            const Text(
               '신고하셨습니다.',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -44,18 +44,14 @@ class ConfirmReportReturnRequestPage extends StatelessWidget {
                   color: Colors.blue,
                   fontWeight: FontWeight.w700),
             ),
-            Spacer(),
+            const Spacer(),
             Center(
               child: IconButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRouteWithoutAnimation(
-                      builder: (context) => SentReturnRequestListPage(
-                          // userId: userId,
-                          // password: userPassword,
-                          // name: userName
-                      ),
+                      builder: (context) => SentReturnRequestListPage(),
                     ),
                   );
                 },

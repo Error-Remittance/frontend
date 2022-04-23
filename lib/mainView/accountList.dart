@@ -3,6 +3,7 @@ import 'package:frontend/mainView/sentReturnRequestList.dart';
 import 'package:frontend/mainView/reportList.dart';
 import 'package:frontend/register/getAccount.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:frontend/mainView/selectProcess.dart';
 
 class AccountListPage extends StatefulWidget {
   const AccountListPage({Key? key}) : super(key: key);
@@ -128,7 +129,7 @@ class _AccountListState extends State<AccountListPage> {
                         PageTransition(
                           type: PageTransitionType.rightToLeft,
                           child: ReportListPage(
-
+                            // send information
                           ),
                         ),
                       );
@@ -166,7 +167,7 @@ class _AccountListState extends State<AccountListPage> {
                       Navigator.push(
                         context,
                         MaterialPageRouteWithoutAnimation(
-
+                            builder: (context) => SelectProcessPage(),
                         ),
                       );
                     },
