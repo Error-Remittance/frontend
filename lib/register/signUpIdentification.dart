@@ -31,6 +31,16 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
   bool isChecked4 = false;
   bool isChecked5 = false;
 
+  List<String> terms = [
+    "착송 필수 항목 모두 동의",
+    "휴대폰/카드 본인확인 서비스",
+    "문자/이메일 수신 동의",
+    "맞춤형 광고 선택 동의",
+    "마케팅 정보 수신 선택 동의",
+  ];
+
+  List<bool> isChecked = [false, false, false, false, false];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -254,17 +264,17 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                                       setState(() {
                                         isAllChecked = value!;
                                         if(isAllChecked) {
-                                          isChecked1 = true;
-                                          isChecked2 = true;
-                                          isChecked3 = true;
-                                          isChecked4 = true;
-                                          isChecked5 = true;
+                                          isChecked[0] = true;
+                                          isChecked[1] = true;
+                                          isChecked[2] = true;
+                                          isChecked[3] = true;
+                                          isChecked[4] = true;
                                         } else {
-                                          isChecked1 = false;
-                                          isChecked2 = false;
-                                          isChecked3 = false;
-                                          isChecked4 = false;
-                                          isChecked5 = false;
+                                          isChecked[0] = false;
+                                          isChecked[1] = false;
+                                          isChecked[2] = false;
+                                          isChecked[3] = false;
+                                          isChecked[4]= false;
                                         }
                                       });
                                     },
@@ -279,216 +289,56 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                           margin: const EdgeInsets.only(top: 20),
                           child: Column(
                             children: [
-                              Row(
-                                children: <Widget>[
-                                  Checkbox(
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)
-                                      ),
-                                    ),
-                                    value: isChecked1,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        isChecked1 = value!;
-                                        if(!isChecked1) {
-                                          isAllChecked = false;
-                                        }
-                                        if(isChecked1 == true && isChecked2 == true && isChecked3 == true && isChecked4 == true && isChecked5 == true) {
-                                          isAllChecked = true;
-                                        }
-                                      });
-                                    },
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.only(left: 20),
-                                    child: const Text(
-                                      "착송 필수 항목 모두 동의",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  Container(
-                                    margin: const EdgeInsets.only(right: 20),
-                                    child: const Icon(
-                                      Icons.chevron_right,
-                                      color: Color(0xff626262),
-                                      size: 30,
-                                    ),
-                                  ),
-                                ],
+                              ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  itemCount: 5,
+                                  itemBuilder: (BuildContext context, int index) {
+                                    return Row(
+                                      children: <Widget>[
+                                        Checkbox(
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)
+                                            ),
+                                          ),
+                                          value: isChecked[index],
+                                          onChanged: (value) {
+                                            setState(() {
+                                              isChecked[index] = value!;
+                                              if(!isChecked[index]) {
+                                                isAllChecked = false;
+                                              }
+                                              if(isChecked[0] && isChecked[1] && isChecked[2] && isChecked[3] && isChecked[4]) {
+                                                isAllChecked = true;
+                                              }
+                                            });
+                                          },
+                                        ),
+                                        Container(
+                                          margin: const EdgeInsets.only(left: 20),
+                                          child: Text(
+                                            terms[index],
+                                            style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                        Container(
+                                          margin: const EdgeInsets.only(right: 20),
+                                          child: const Icon(
+                                            Icons.chevron_right,
+                                            color: Color(0xff626262),
+                                            size: 30,
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  }
                               ),
-                              Row(
-                                children: <Widget>[
-                                  Checkbox(
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)
-                                      ),
-                                    ),
-                                    value: isChecked2,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        isChecked2 = value!;
-                                        if(!isChecked2) {
-                                          isAllChecked = false;
-                                        }
-                                        if(isChecked1 == true && isChecked2 == true && isChecked3 == true && isChecked4 == true && isChecked5 == true) {
-                                          isAllChecked = true;
-                                        }
-                                      });
-                                    },
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.only(left: 20),
-                                    child: const Text(
-                                      "휴대폰/카드 본인확인 서비스",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  Container(
-                                    margin: const EdgeInsets.only(right: 20),
-                                    child: const Icon(
-                                      Icons.chevron_right,
-                                      color: Color(0xff626262),
-                                      size: 30,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Checkbox(
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)
-                                      ),
-                                    ),
-                                    value: isChecked3,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        isChecked3 = value!;
-                                        if(!isChecked3) {
-                                          isAllChecked = false;
-                                        }
-                                        if(isChecked1 == true && isChecked2 == true && isChecked3 == true && isChecked4 == true && isChecked5 == true) {
-                                          isAllChecked = true;
-                                        }
-                                      });
-                                    },
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.only(left: 20),
-                                    child: const Text(
-                                      "문자/이메일 수신 동의",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  Container(
-                                    margin: const EdgeInsets.only(right: 20),
-                                    child: const Icon(
-                                      Icons.chevron_right,
-                                      color: Color(0xff626262),
-                                      size: 30,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Checkbox(
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)
-                                      ),
-                                    ),
-                                    value: isChecked4,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        isChecked4 = value!;
-                                        if(!isChecked4) {
-                                          isAllChecked = false;
-                                        }
-                                        if(isChecked1 == true && isChecked2 == true && isChecked3 == true && isChecked4 == true && isChecked5 == true) {
-                                          isAllChecked = true;
-                                        }
-                                      });
-                                    },
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.only(left: 20),
-                                    child: const Text(
-                                      "맞춤형 광고 선택 동의",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  Container(
-                                    margin: const EdgeInsets.only(right: 20),
-                                    child: const Icon(
-                                      Icons.chevron_right,
-                                      color: Color(0xff626262),
-                                      size: 30,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Checkbox(
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)
-                                      ),
-                                    ),
-                                    value: isChecked5,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        isChecked5 = value!;
-                                        if(!isChecked5) {
-                                          isAllChecked = false;
-                                        }
-                                        if(isChecked1 == true && isChecked2 == true && isChecked3 == true && isChecked4 == true && isChecked5 == true) {
-                                          isAllChecked = true;
-                                        }
-                                      });
-                                    },
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.only(left: 20),
-                                    child: const Text(
-                                      "마케팅 정보 수신 선택 동의",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  Container(
-                                    margin: const EdgeInsets.only(right: 20),
-                                    child: const Icon(
-                                      Icons.chevron_right,
-                                      color: Color(0xff626262),
-                                      size: 30,
-                                    ),
-                                  ),
-                                ],
-                              ),
+
                             ],
                           ),
                         ),
@@ -497,7 +347,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                           margin: const EdgeInsets.only(bottom: 25),
                           child: ElevatedButton(
                             onPressed: () {
-                              isChecked1 == true && isChecked2 == true && isChecked3 == true ?
+                              isChecked[0] && isChecked[1] && isChecked[2] ?
                               Navigator.push(
                                 context,
                                 MaterialPageRouteWithoutAnimation(
@@ -526,7 +376,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              primary: isChecked1 == true && isChecked2 == true && isChecked3 == true ? const Color(0xff64ACF9) : const Color(0xffd9d9d9),
+                              primary: isChecked[0] && isChecked[1] && isChecked[2] ? const Color(0xff64ACF9) : const Color(0xffd9d9d9),
                               side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
                             ),
                           ),

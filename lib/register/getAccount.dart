@@ -66,7 +66,9 @@ class _GetAccountState extends State<GetAccount> {
         backgroundColor: Colors.white, // Appbar 배경색
         elevation: 0.0, // Appbar 그림자
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            widget.tag == 1 ? Navigator.pop(context) : null;
+          },
           icon: const Icon(
             Icons.chevron_left,
             color: Colors.black,
