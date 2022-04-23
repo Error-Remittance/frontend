@@ -82,9 +82,9 @@ class _GetAccountState extends State<GetAccount> {
              color: Colors.white,
              width: MediaQuery.of(context).size.width,
              height: MediaQuery.of(context).size.height*0.15,
-             alignment: Alignment.center,
+             alignment: Alignment.topLeft,
              margin: const EdgeInsets.only(bottom: 20),
-             padding: const EdgeInsets.only(top: 10, bottom: 20),
+             padding: const EdgeInsets.only(top: 10, bottom: 20, left: 15),
              child: Text(
                widget.text,
                style: const TextStyle(

@@ -36,10 +36,10 @@ class _AskReportReturnRequestState extends State<AskReportReturnRequestPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               height: 200,
             ),
-            Text(
+            const Text(
               '06.28(월) 김도둑님의\n착오 송금건을 신고합니다.',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -47,10 +47,10 @@ class _AskReportReturnRequestState extends State<AskReportReturnRequestPage> {
                   color: Colors.blue,
                   fontWeight: FontWeight.w700),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Spacer(),
+            const Spacer(),
             Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
