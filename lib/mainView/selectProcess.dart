@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/mainView/selectAskReturn.dart';
+import 'package:frontend/mainView/selectReturn.dart';
 
 class SelectProcessPage extends StatefulWidget {
   const SelectProcessPage({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class _SelectProcessPageState extends State<SelectProcessPage> {
           ),
         ),
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "착오송금 항목 선택",
           style: TextStyle(
             color: Colors.grey,
@@ -47,8 +48,8 @@ class _SelectProcessPageState extends State<SelectProcessPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.only(top: 15, left: 15),
-                child: Text(
+                margin: const EdgeInsets.only(top: 15, left: 15),
+                child: const Text(
                   "선택하신 계좌를 통해\n어떤 업무를 진행하실건가요?",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -59,12 +60,12 @@ class _SelectProcessPageState extends State<SelectProcessPage> {
               ),
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(top: 100),
-                  padding: EdgeInsets.only(left: 15, right: 15),
+                  margin: const EdgeInsets.only(top: 100),
+                  padding: const EdgeInsets.only(left: 15, right: 15),
                   width: MediaQuery.of(context).size.width * 0.80,
                   height: 130,
                   decoration: BoxDecoration(
-                    color: Color(0xFF1690F0),
+                    color: const Color(0xFF1690F0),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: Column(
@@ -110,7 +111,7 @@ class _SelectProcessPageState extends State<SelectProcessPage> {
                   ),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Center(
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 15),
@@ -162,7 +163,14 @@ class _SelectProcessPageState extends State<SelectProcessPage> {
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 25),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRouteWithoutAnimation(
+                          builder: (context) => SelectReturnPage(),
+                        ),
+                      );
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: const [
