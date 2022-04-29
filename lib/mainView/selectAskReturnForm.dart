@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:frontend/mainView/selectAskReturnRequest.dart';
 
 class SelectAskReturnFormPage extends StatefulWidget {
   const SelectAskReturnFormPage({Key? key}) : super(key: key);
@@ -11,7 +12,9 @@ class SelectAskReturnFormPage extends StatefulWidget {
 class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
-
+  
+  List<bool> isChecked = [false, false, false, false];
+  List<String> _checkText = ["송금액 오기입", "계좌번호 오기입", "거래 취소", "기타"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +62,7 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
                 ),
                 Center(
                   child: Container(
-                    margin: const EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -81,6 +84,14 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black38.withOpacity(0.2),
+                                spreadRadius: 0.1,
+                                blurRadius: 8,
+                                offset: const Offset(0, 6), // changes position of shadow
+                              ),
+                            ],
                           ),
                           child: const Text(
                             "오송금반환요청",
@@ -98,6 +109,14 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black38.withOpacity(0.2),
+                                spreadRadius: 0.1,
+                                blurRadius: 8,
+                                offset: const Offset(0, 6), // changes position of shadow
+                              ),
+                            ],
                           ),
                           child: const Text(
                             "착송어플다운요망",
@@ -112,7 +131,7 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
                 ),
                 Center(
                   child: Container(
-                    margin: const EdgeInsets.only(top: 165),
+                    margin: const EdgeInsets.only(top: 150),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -134,6 +153,14 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black38.withOpacity(0.2),
+                                spreadRadius: 0.1,
+                                blurRadius: 8,
+                                offset: const Offset(0, 6), // changes position of shadow
+                              ),
+                            ],
                           ),
                           child: Row(
                             children: const [
@@ -156,6 +183,14 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black38.withOpacity(0.2),
+                                spreadRadius: 0.1,
+                                blurRadius: 8,
+                                offset: const Offset(0, 6), // changes position of shadow
+                              ),
+                            ],
                           ),
                           child: TextFormField(
                             onChanged: (text) {},
@@ -176,7 +211,7 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
                 ),
                 Center(
                   child: Container(
-                    margin: const EdgeInsets.only(top: 325),
+                    margin: const EdgeInsets.only(top: 300),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -197,6 +232,14 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black38.withOpacity(0.2),
+                                spreadRadius: 0.1,
+                                blurRadius: 8,
+                                offset: const Offset(0, 6), // changes position of shadow
+                              ),
+                            ],
                           ),
                           child: TextFormField(
                             onChanged: (text) {},
@@ -212,6 +255,115 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 400),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 5, left: 5),
+                          child: const Text(
+                            "사유 체크란",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          height: 150,
+                          padding: const EdgeInsets.only(top: 10, bottom: 10,left: 10, right: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black38.withOpacity(0.2),
+                                spreadRadius: 0.1,
+                                blurRadius: 8,
+                                offset: const Offset(0, 6), // changes position of shadow
+                              ),
+                            ],
+                          ),
+                          child: ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            itemCount: 4,
+                            itemBuilder: (BuildContext context, int index) {
+                              return SizedBox(
+                                height: 32,
+                                child: Row(
+                                  children: <Widget>[
+                                    Checkbox(
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(5),
+                                        ),
+                                      ),
+                                      value: isChecked[index],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          isChecked[index] = value!;
+                                        });
+                                      },
+                                    ),
+                                    Text(
+                                      _checkText[index],
+                                      style: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 15,),
+                                    index == 3
+                                    ? SizedBox(
+                                      width: 200,
+                                      height: 50,
+                                      child: TextFormField(
+                                        maxLength: 30,
+                                        onChanged: (text) {},
+                                        decoration: const InputDecoration(
+                                          // border: InputBorder.none,
+                                          counterText:'',
+                                          hintText: '최대 30자까지 사유를 기입해주세요.',
+                                          hintStyle: TextStyle(
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                    : Container(),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 567,),
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRouteWithoutAnimation(
+                            builder: (context) => SelectAskReturnRequestPage(),
+                          ),
+                        );
+                      },
+                      icon: Image.asset('lib/assets/button_submit.png'),
+                      iconSize: 80,
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                     ),
                   ),
                 ),
