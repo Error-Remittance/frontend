@@ -26,6 +26,7 @@ class _SelectAskReturnPageState extends State<SelectAskReturnPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       key: _key,
       appBar: AppBar(
@@ -168,7 +169,7 @@ class _SelectAskReturnPageState extends State<SelectAskReturnPage> {
                                           ),
                                           Container(
                                             margin: const EdgeInsets.only(left: 7.5),
-                                            width: 300,
+                                            width: MediaQuery.of(context).size.width * 0.75,
                                             child: Text(
                                               terms[index],
                                               style: const TextStyle(

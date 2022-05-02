@@ -161,7 +161,7 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
                                           ),
                                           Container(
                                             margin: const EdgeInsets.only(left: 7.5),
-                                            width: 300,
+                                            width: MediaQuery.of(context).size.width * 0.75,
                                             child: Text(
                                               terms[index],
                                               style: const TextStyle(
