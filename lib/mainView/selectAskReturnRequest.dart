@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/mainView/selectProcess.dart';
+import 'package:frontend/mainView/confirmPattern.dart';
 
 class SelectAskReturnRequestPage extends StatefulWidget {
   const SelectAskReturnRequestPage({Key? key}) : super(key: key);
@@ -113,8 +115,8 @@ class _SelectAskReturnRequestPageState extends State<SelectAskReturnRequestPage>
               margin: const EdgeInsets.only(top: 30),
               child: const Text(
                 "해당 반환 요청으로 수취인 대금 2,500원\n"
-                    "수고비 500원이 발생해 3,500원의 수수료가 발생합니다.\n"
-                    "(수취인이 반환하면 수수료를 차감한 금액만큼 돌려드립니다.)",
+                "수고비 500원이 발생해 3,500원의 수수료가 발생합니다.\n"
+                "(수취인이 반환하면 수수료를 차감한 금액만큼 돌려드립니다.)",
                 style: TextStyle(
                   color: Color(0xff808080),
                   fontSize: 13,
@@ -128,7 +130,14 @@ class _SelectAskReturnRequestPageState extends State<SelectAskReturnRequestPage>
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRouteWithoutAnimation(
+                        builder: (context) => ConfirmPattern(),
+                      ),
+                    );
+                  },
                   icon: Image.asset('lib/assets/button_accept.png'),
                   iconSize: 80,
                   splashColor: Colors.transparent,
@@ -136,7 +145,12 @@ class _SelectAskReturnRequestPageState extends State<SelectAskReturnRequestPage>
                 ),
                 IconButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRouteWithoutAnimation(
+                        builder: (context) => SelectProcessPage(),
+                      ),
+                    );
                   },
                   icon: Image.asset('lib/assets/button_decline.png'),
                   iconSize: 80,

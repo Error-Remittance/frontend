@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/mainView/selectAskReturn.dart';
 import 'package:frontend/mainView/selectReturn.dart';
+import 'package:frontend/mainView/accountList.dart';
 
 class SelectProcessPage extends StatefulWidget {
   const SelectProcessPage({Key? key}) : super(key: key);
@@ -23,7 +24,12 @@ class _SelectProcessPageState extends State<SelectProcessPage> {
         elevation: 0.0, // Appbar 그림자
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRouteWithoutAnimation(
+                builder: (context) => AccountListPage(),
+              ),
+            );
           },
           icon: const Icon(
             Icons.chevron_left,

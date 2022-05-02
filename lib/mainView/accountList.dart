@@ -4,6 +4,7 @@ import 'package:frontend/mainView/reportList.dart';
 import 'package:frontend/register/getAccount.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:frontend/mainView/selectProcess.dart';
+import 'package:frontend/mainView/utils.dart';
 
 class AccountListPage extends StatefulWidget {
   const AccountListPage({Key? key}) : super(key: key);
@@ -69,9 +70,7 @@ class _AccountListState extends State<AccountListPage> {
                             Navigator.push(
                               context,
                               MaterialPageRouteWithoutAnimation(
-                                builder: (context) => SentReturnRequestListPage(
-
-                                ),
+                                builder: (context) => SentReturnRequestListPage(),
                               ),
                             );
                           },
@@ -128,9 +127,7 @@ class _AccountListState extends State<AccountListPage> {
                         context,
                         PageTransition(
                           type: PageTransitionType.rightToLeft,
-                          child: ReportListPage(
-                            // send information
-                          ),
+                          child: ReportListPage(),
                         ),
                       );
                     },
@@ -142,7 +139,7 @@ class _AccountListState extends State<AccountListPage> {
         ),
       ),
       body: WillPopScope(
-        onWillPop: () { return Future(() => false); },
+        onWillPop: onWillPop, //() { return Future(() => false); },
           child: SafeArea(
             child: Center(
               child: Column(
