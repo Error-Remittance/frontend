@@ -14,9 +14,10 @@ Future<bool> onWillPop() async {
   if (backButton) {
     backbuttonpressedTime = currentTime;
     Fluttertoast.showToast(
-        msg: "뒤로가기를 한 번 더 누르면 앱이 종료됩니다.",
-        backgroundColor: Colors.black,
-        textColor: Colors.white);
+      msg: "'뒤로' 버튼을 한번 더 누르시면 종료됩니다.",
+      backgroundColor: Colors.black38,
+      textColor: Colors.white,
+    );
     return false;
   }
   SystemNavigator.pop();

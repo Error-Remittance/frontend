@@ -1,12 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/register/patternLock/patternLock.dart';
-import 'package:frontend/mainView/accountList.dart';
 import 'package:frontend/mainView/selectAskReturnConfirm.dart';
+import 'package:frontend/mainView/selectReturnConfirm.dart';
 import 'package:frontend/register/utils.dart';
 
 class ConfirmPattern extends StatefulWidget {
-  const ConfirmPattern({Key? key}) : super(key: key);
+  final int tag;
+  const ConfirmPattern({Key? key, required this.tag}) : super(key: key);
 
   @override
   _ConfirmPatternState createState() => _ConfirmPatternState();
@@ -82,7 +83,7 @@ class _ConfirmPatternState extends State<ConfirmPattern> {
                     Navigator.push(
                       context,
                       MaterialPageRouteWithoutAnimation(
-                        builder: (context) => SelectAskReturnConfirmPage(),
+                        builder: (context) => widget.tag == 0 ? SelectAskReturnConfirmPage() : SelectReturnConfirmPage(),
                       ),
                     );
                   },
