@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/mainView/selectReturnForm.dart';
 
 class SelectReturnPage extends StatefulWidget {
   const SelectReturnPage({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class SelectReturnPage extends StatefulWidget {
 class _SelectReturnPageState extends State<SelectReturnPage> {
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+  final GlobalKey _widgetKey = GlobalKey();
 
   List<String> terms = [
     "오송금 발생 유무를 확인하기 위해 반호나 이후 사용자의 거래내역에 대한 접근을 허가해주는 것에 동의합니다.",
@@ -20,9 +22,17 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
   bool isAllChecked = false;
   List<bool> isChecked = [false, false, false];
 
+  _getPosition(GlobalKey key) {
+    if (key.currentContext != null) {
+      final RenderBox renderBox = key.currentContext!.findRenderObject() as RenderBox;
+      final position = renderBox.localToGlobal(Offset.zero); return position;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       key: _key,
       appBar: AppBar(
@@ -186,7 +196,16 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
               const Spacer(),
               Center(
                 child: IconButton(
-                  onPressed: () {},
+                  key: _widgetKey,
+                  onPressed: () {
+                    print("${_getPosition(_widgetKey).dx}, ${_getPosition(_widgetKey).dy}");
+                    Navigator.push(
+                      context,
+                      MaterialPageRouteWithoutAnimation(
+                        builder: (context) => SelectReturnFormPage(dx: _getPosition(_widgetKey).dx, dy: _getPosition(_widgetKey).dy,),
+                      ),
+                    );
+                  },
                   icon: Image.asset('lib/assets/button_submit.png'),
                   iconSize: 80,
                   splashColor: Colors.transparent,

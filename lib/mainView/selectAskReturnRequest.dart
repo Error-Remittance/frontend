@@ -134,7 +134,7 @@ class _SelectAskReturnRequestPageState extends State<SelectAskReturnRequestPage>
                     Navigator.push(
                       context,
                       MaterialPageRouteWithoutAnimation(
-                        builder: (context) => ConfirmPattern(),
+                        builder: (context) => ConfirmPattern(tag: 0,),
                       ),
                     );
                   },
