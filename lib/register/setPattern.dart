@@ -29,6 +29,7 @@ class _SetPatternState extends State<SetPattern> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       key: scaffoldKey,
       appBar: AppBar(
@@ -36,14 +37,7 @@ class _SetPatternState extends State<SetPattern> {
         elevation: 0.0, // Appbar 그림자
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRouteWithoutAnimation(
-                builder: (context) => const SignUpIdentificationPage(
-
-                ),
-              ),
-            );
+            Navigator.pop(context);
           },
           icon: const Icon(
             Icons.chevron_left,

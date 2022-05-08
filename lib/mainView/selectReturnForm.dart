@@ -162,7 +162,7 @@ class _SelectReturnFormPageState extends State<SelectReturnFormPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color(0xff3E97F7),
-                        fontSize: 13,
+                        fontSize: 12,
                       ),
                     ),
                   ),
@@ -176,7 +176,7 @@ class _SelectReturnFormPageState extends State<SelectReturnFormPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color(0xffFF4141),
-                        fontSize: 13,
+                        fontSize: 12,
                       ),
                     ),
                   ),

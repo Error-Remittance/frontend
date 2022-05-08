@@ -60,19 +60,17 @@ class _ReportListState extends State<ReportListPage> {
             Navigator.push(
               context,
               MaterialPageRouteWithoutAnimation(
-                builder: (context) => const AccountListPage(
-
-                ),
+                builder: (context) => const AccountListPage(),
               ),
             );
             return true;
           },
           child: Column(
           children: <Widget>[
-            const Spacer(),
+            // const Spacer(),
             Container(
-              margin: const EdgeInsets.only(bottom: 20),
-              height: MediaQuery.of(context).size.height * 0.8,
+              margin: const EdgeInsets.only(top:20),
+              height: MediaQuery.of(context).size.height * 0.84,
               child: SingleChildScrollView(
                 physics: const ScrollPhysics(),
                 child: Column(
