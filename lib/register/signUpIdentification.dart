@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:frontend/register/signUpStart.dart';
-import 'package:frontend/register/setPattern.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:frontend/register/signUpSetIdPw.dart';
 
 class SignUpIdentificationPage extends StatefulWidget {
   const SignUpIdentificationPage({Key? key}) : super(key: key);
@@ -49,9 +48,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
               Navigator.push(
                 context,
                 MaterialPageRouteWithoutAnimation(
-                  builder: (context) => const SignUpStartPage(
-
-                  ),
+                  builder: (context) => const SignUpStartPage(),
                 ),
               );
             },
@@ -76,6 +73,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
               ),
             ),
             Container(
+              margin: const EdgeInsets.only(top: 50),
               width: MediaQuery.of(context).size.width * 0.8,
               decoration: const BoxDecoration(
                 border: Border(bottom: BorderSide(color: Colors.black38)),
@@ -174,7 +172,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
                         splashFactory: NoSplash.splashFactory,
-                        primary: Color(0xffe2dfdf),
+                        primary: const Color(0xffe2dfdf),
                       ),
                     ),
                   ),
@@ -346,9 +344,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRouteWithoutAnimation(
-                                  builder: (context) => const SetPattern(
-
-                                  ),
+                                  builder: (context) => SignUpSetIdPwPage(),
                                 ),
                               ) : null;
                             },
