@@ -22,11 +22,7 @@ class ConfirmReportReturnRequestPage extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRouteWithoutAnimation(
-                builder: (context) => SentReturnRequestListPage(
-                  // userId: userId,
-                  // password: userPassword,
-                  // name: userName),
-                ),
+                builder: (context) => SentReturnRequestListPage(),
               ),
             );
             return true;

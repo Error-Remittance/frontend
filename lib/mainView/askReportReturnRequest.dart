@@ -26,9 +26,7 @@ class _AskReportReturnRequestState extends State<AskReportReturnRequestPage> {
             Navigator.push(
               context,
               MaterialPageRouteWithoutAnimation(
-                builder: (context) => const AccountListPage(
-
-                ),
+                builder: (context) => const AccountListPage(),
               ),
             );
             return true;
@@ -76,7 +74,7 @@ class _AskReportReturnRequestState extends State<AskReportReturnRequestPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             )
           ],
@@ -89,11 +87,7 @@ class _AskReportReturnRequestState extends State<AskReportReturnRequestPage> {
     Navigator.push(
       context,
       MaterialPageRouteWithoutAnimation(
-        builder: (context) => ConfirmReportReturnRequestPage(
-            // userId: widget.userId,
-            // userPassword: widget.userPassword,
-            // userName: widget.userName
-          ),
+        builder: (context) => ConfirmReportReturnRequestPage(),
         ),
       );
   }
