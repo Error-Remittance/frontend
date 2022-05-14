@@ -194,7 +194,7 @@ class _SelectReturnFormPageState extends State<SelectReturnFormPage> {
                           ),
                         );
                       },
-                      icon: Image.asset('lib/assets/button_submit.png'),
+                      icon: Image.asset('lib/assets/button_next.png'),
                       iconSize: 80,
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent,
