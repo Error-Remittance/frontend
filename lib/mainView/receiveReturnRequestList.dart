@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/mainView/accountList.dart';
-import 'package:frontend/mainView/askReportReturnRequest.dart';
 
-class SentReturnRequestListPage extends StatefulWidget {
-  const SentReturnRequestListPage({Key? key}) : super(key: key);
+class ReceiveReturnRequestListPage extends StatefulWidget {
+  const ReceiveReturnRequestListPage({Key? key}) : super(key: key);
 
   @override
-  _SentReturnRequestListState createState() => _SentReturnRequestListState();
+  _ReceiveReturnRequestListState createState() => _ReceiveReturnRequestListState();
 }
 
-class _SentReturnRequestListState extends State<SentReturnRequestListPage> {
+class _ReceiveReturnRequestListState extends State<ReceiveReturnRequestListPage> {
   @override
   void initState() {
     super.initState();
@@ -41,7 +40,7 @@ class _SentReturnRequestListState extends State<SentReturnRequestListPage> {
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text(
-          '보낸 요청 목록',
+          '요청받은 목록',
           style: TextStyle(
             color: Colors.black87,
             fontSize: 16,
@@ -132,16 +131,7 @@ class _SentReturnRequestListState extends State<SentReturnRequestListPage> {
                                       ),
                                       children: [
                                         GestureDetector(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRouteWithoutAnimation(
-                                                builder: (context) => const AskReportReturnRequestPage(
-
-                                                ),
-                                              ),
-                                            );
-                                          },
+                                          onTap: () {},
                                           child: Container(
                                             height: 50,
                                             color: const Color(0xFFDEECFF),
@@ -187,7 +177,7 @@ class _SentReturnRequestListState extends State<SentReturnRequestListPage> {
                                                       width: 33,
                                                       child: Image.asset(
                                                         // 'lib/assets/icons/report_blue.png'
-                                                        'lib/assets/icons/report_red.png',
+                                                        'lib/assets/icons/return_icon.png',
                                                       ),
                                                     ),
                                                   ],

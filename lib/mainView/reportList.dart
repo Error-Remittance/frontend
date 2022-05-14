@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/mainView/accountList.dart';
-
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
 
 class ReportListPage extends StatefulWidget {
@@ -34,9 +32,7 @@ class _ReportListState extends State<ReportListPage> {
                 context,
                 PageTransition(
                   type: PageTransitionType.leftToRightWithFade,
-                  child: const AccountListPage(
-
-                    ),
+                  child: const AccountListPage(),
                   ),
                 );
             },
