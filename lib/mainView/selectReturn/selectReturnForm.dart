@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:frontend/mainView/selectReturnRequest.dart';
+import 'package:frontend/utils.dart';
+import 'package:frontend/mainView/selectReturn/selectReturnRequest.dart';
 
 class SelectReturnFormPage extends StatefulWidget {
   final double dx;
@@ -189,7 +190,7 @@ class _SelectReturnFormPageState extends State<SelectReturnFormPage> {
                         // print('${widget.dx}, ${widget.dy}');
                         Navigator.push(
                           context,
-                          MaterialPageRouteWithoutAnimation(
+                          NoAnimationMaterialPageRoute(
                             builder: (context) => SelectReturnRequestPage(),
                           ),
                         );
@@ -208,11 +209,4 @@ class _SelectReturnFormPageState extends State<SelectReturnFormPage> {
       ),
     );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

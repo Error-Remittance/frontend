@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/utils.dart';
+import 'package:frontend/alertWindow.dart';
 import 'package:frontend/register/patternLock/patternLock.dart';
-import 'package:frontend/mainView/selectAskReturnConfirm.dart';
-import 'package:frontend/mainView/selectReturnConfirm.dart';
-import 'package:frontend/register/utils.dart';
+import 'package:frontend/mainView/selectAskReturn/selectAskReturnConfirm.dart';
+import 'package:frontend/mainView/selectReturn/selectReturnConfirm.dart';
 
 class ConfirmPattern extends StatefulWidget {
   final int tag;
@@ -82,7 +83,7 @@ class _ConfirmPatternState extends State<ConfirmPattern> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRouteWithoutAnimation(
+                      NoAnimationMaterialPageRoute(
                         builder: (context) => widget.tag == 0 ? SelectAskReturnConfirmPage() : SelectReturnConfirmPage(),
                       ),
                     );
@@ -117,51 +118,15 @@ class _ConfirmPatternState extends State<ConfirmPattern> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   void FlutterDialog(String text) {
     showDialog(
-        context: context,
-        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            // RoundedRectangleBorder - Dialog 화면 모서리 둥글게 조절
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0)),
-            //Dialog Main Title
-            title: Column(
-              children: const <Widget>[
-                Text("알림창"),
-              ],
-            ),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Center(
-                  child: Text(
-                    text,
-                  ),
-                ),
-              ],
-            ),
-            actions: <Widget>[
-              TextButton(
-                child: const Center(
-                  child: Text("확인"),
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          );
-        });
+      context: context,
+      //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertWindow(contents: text);
+      }
+    );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

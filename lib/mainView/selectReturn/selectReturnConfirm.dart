@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/utils.dart';
 import 'package:frontend/mainView/accountList.dart';
 
 class SelectReturnConfirmPage extends StatelessWidget {
@@ -39,7 +40,7 @@ class SelectReturnConfirmPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRouteWithoutAnimation(
+                    NoAnimationMaterialPageRoute(
                       builder: (context) => AccountListPage(),
                     ),
                   );
@@ -55,11 +56,4 @@ class SelectReturnConfirmPage extends StatelessWidget {
       ),
     );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

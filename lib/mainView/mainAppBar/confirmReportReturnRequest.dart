@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:frontend/mainView/sentReturnRequestList.dart';
+import 'package:frontend/utils.dart';
+import 'package:frontend/mainView/mainAppBar/sentReturnRequestList.dart';
 
 
 class ConfirmReportReturnRequestPage extends StatelessWidget {
@@ -21,7 +21,7 @@ class ConfirmReportReturnRequestPage extends StatelessWidget {
           onWillPop: () async {
             Navigator.push(
               context,
-              MaterialPageRouteWithoutAnimation(
+              NoAnimationMaterialPageRoute(
                 builder: (context) => SentReturnRequestListPage(),
               ),
             );
@@ -46,7 +46,7 @@ class ConfirmReportReturnRequestPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRouteWithoutAnimation(
+                    NoAnimationMaterialPageRoute(
                       builder: (context) => SentReturnRequestListPage(),
                     ),
                   );
@@ -62,11 +62,4 @@ class ConfirmReportReturnRequestPage extends StatelessWidget {
       ),
     );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

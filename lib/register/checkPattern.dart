@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/utils.dart';
+import 'package:frontend/alertWindow.dart';
 import 'package:frontend/register/patternLock/patternLock.dart';
 import 'package:frontend/mainView/accountList.dart';
-import 'package:frontend/register/utils.dart';
 
 class CheckPattern extends StatefulWidget {
   const CheckPattern({Key? key}) : super(key: key);
@@ -91,7 +92,7 @@ class _CheckPatternState extends State<CheckPattern> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRouteWithoutAnimation(
+                    NoAnimationMaterialPageRoute(
                       builder: (context) => const AccountListPage(
 
                       ),
@@ -128,51 +129,15 @@ class _CheckPatternState extends State<CheckPattern> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   void FlutterDialog(String text) {
     showDialog(
-        context: context,
-        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            // RoundedRectangleBorder - Dialog 화면 모서리 둥글게 조절
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0)),
-            //Dialog Main Title
-            title: Column(
-              children: const <Widget>[
-                Text("알림창"),
-              ],
-            ),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Center(
-                  child: Text(
-                    text,
-                  ),
-                ),
-              ],
-            ),
-            actions: <Widget>[
-              TextButton(
-                child: const Center(
-                  child: Text("확인"),
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          );
-        });
+      context: context,
+      //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertWindow(contents: text);
+      }
+    );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

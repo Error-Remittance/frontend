@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/utils.dart';
 import 'package:frontend/mainView/selectProcess.dart';
 import 'package:frontend/mainView/confirmPattern.dart';
 
@@ -133,7 +134,7 @@ class _SelectAskReturnRequestPageState extends State<SelectAskReturnRequestPage>
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRouteWithoutAnimation(
+                      NoAnimationMaterialPageRoute(
                         builder: (context) => ConfirmPattern(tag: 0,),
                       ),
                     );
@@ -147,7 +148,7 @@ class _SelectAskReturnRequestPageState extends State<SelectAskReturnRequestPage>
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRouteWithoutAnimation(
+                      NoAnimationMaterialPageRoute(
                         builder: (context) => SelectProcessPage(),
                       ),
                     );
@@ -165,11 +166,4 @@ class _SelectAskReturnRequestPageState extends State<SelectAskReturnRequestPage>
       ),
     );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

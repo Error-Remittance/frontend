@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/utils.dart';
 import 'package:frontend/mainView/accountList.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -55,7 +56,7 @@ class _ReportListState extends State<ReportListPage> {
           onWillPop: () async {
             Navigator.push(
               context,
-              MaterialPageRouteWithoutAnimation(
+              NoAnimationMaterialPageRoute(
                 builder: (context) => const AccountListPage(),
               ),
             );
@@ -66,7 +67,7 @@ class _ReportListState extends State<ReportListPage> {
             // const Spacer(),
             Container(
               margin: const EdgeInsets.only(top:20),
-              height: MediaQuery.of(context).size.height * 0.84,
+              height: MediaQuery.of(context).size.height * 0.8,
               child: SingleChildScrollView(
                 physics: const ScrollPhysics(),
                 child: Column(
@@ -179,11 +180,4 @@ class _ReportListState extends State<ReportListPage> {
       ),
     );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }
