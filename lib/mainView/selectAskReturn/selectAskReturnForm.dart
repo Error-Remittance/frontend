@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:frontend/mainView/selectAskReturnRequest.dart';
+import 'package:frontend/utils.dart';
+import 'package:frontend/mainView/selectAskReturn//selectAskReturnRequest.dart';
 
 class SelectAskReturnFormPage extends StatefulWidget {
   const SelectAskReturnFormPage({Key? key}) : super(key: key);
@@ -355,7 +356,7 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRouteWithoutAnimation(
+                          NoAnimationMaterialPageRoute(
                             builder: (context) => SelectAskReturnRequestPage(),
                           ),
                         );
@@ -374,11 +375,4 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
       ),
     );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

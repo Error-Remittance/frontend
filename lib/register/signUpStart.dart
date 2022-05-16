@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/utils.dart';
 import 'package:frontend/register/signUpIdentification.dart';
 import 'package:frontend/register/checkPattern.dart';
 
@@ -72,7 +73,7 @@ class _SignUpStartState extends State<SignUpStartPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRouteWithoutAnimation(
+                      NoAnimationMaterialPageRoute(
                         builder: (context) => const SignUpIdentificationPage(
 
                         ),
@@ -125,7 +126,7 @@ class _SignUpStartState extends State<SignUpStartPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRouteWithoutAnimation(
+                      NoAnimationMaterialPageRoute(
                         builder: (context) => CheckPattern(
 
                         ),
@@ -176,11 +177,4 @@ class _SignUpStartState extends State<SignUpStartPage> {
       ),
     );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

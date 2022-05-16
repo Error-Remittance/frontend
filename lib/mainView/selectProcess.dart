@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/mainView/selectAskReturn.dart';
-import 'package:frontend/mainView/selectReturn.dart';
+import 'package:frontend/utils.dart';
+import 'package:frontend/mainView/selectAskReturn/selectAskReturn.dart';
+import 'package:frontend/mainView/selectReturn/selectReturn.dart';
 import 'package:frontend/mainView/accountList.dart';
 
 class SelectProcessPage extends StatefulWidget {
@@ -26,7 +27,7 @@ class _SelectProcessPageState extends State<SelectProcessPage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRouteWithoutAnimation(
+              NoAnimationMaterialPageRoute(
                 builder: (context) => AccountListPage(),
               ),
             );
@@ -125,7 +126,7 @@ class _SelectProcessPageState extends State<SelectProcessPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRouteWithoutAnimation(
+                        NoAnimationMaterialPageRoute(
                           builder: (context) => SelectAskReturnPage(),
                         ),
                       );
@@ -172,7 +173,7 @@ class _SelectProcessPageState extends State<SelectProcessPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRouteWithoutAnimation(
+                        NoAnimationMaterialPageRoute(
                           builder: (context) => SelectReturnPage(),
                         ),
                       );
@@ -218,11 +219,4 @@ class _SelectProcessPageState extends State<SelectProcessPage> {
       ),
     );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

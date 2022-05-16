@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/utils.dart';
 import 'package:frontend/mainView/accountList.dart';
-import 'package:frontend/mainView/confirmReportReturnRequest.dart';
+import 'package:frontend/mainView/mainAppBar/confirmReportReturnRequest.dart';
 
 class AskReportReturnRequestPage extends StatefulWidget {
   const AskReportReturnRequestPage({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class _AskReportReturnRequestState extends State<AskReportReturnRequestPage> {
           onWillPop: () async {
             Navigator.push(
               context,
-              MaterialPageRouteWithoutAnimation(
+              NoAnimationMaterialPageRoute(
                 builder: (context) => const AccountListPage(),
               ),
             );
@@ -86,16 +87,9 @@ class _AskReportReturnRequestState extends State<AskReportReturnRequestPage> {
   Future<dynamic> _reportReturnRequest() async {
     Navigator.push(
       context,
-      MaterialPageRouteWithoutAnimation(
+      NoAnimationMaterialPageRoute(
         builder: (context) => ConfirmReportReturnRequestPage(),
         ),
       );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

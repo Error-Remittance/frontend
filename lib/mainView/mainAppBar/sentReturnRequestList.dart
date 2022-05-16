@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/utils.dart';
 import 'package:frontend/mainView/accountList.dart';
-import 'package:frontend/mainView/askReportReturnRequest.dart';
+import 'package:frontend/mainView/mainAppBar/askReportReturnRequest.dart';
 
 class SentReturnRequestListPage extends StatefulWidget {
   const SentReturnRequestListPage({Key? key}) : super(key: key);
@@ -27,7 +28,7 @@ class _SentReturnRequestListState extends State<SentReturnRequestListPage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRouteWithoutAnimation(
+              NoAnimationMaterialPageRoute(
                 builder: (context) => const AccountListPage(),
               ),
             );
@@ -135,7 +136,7 @@ class _SentReturnRequestListState extends State<SentReturnRequestListPage> {
                                           onTap: () {
                                             Navigator.push(
                                               context,
-                                              MaterialPageRouteWithoutAnimation(
+                                              NoAnimationMaterialPageRoute(
                                                 builder: (context) => const AskReportReturnRequestPage(
 
                                                 ),
@@ -215,12 +216,4 @@ class _SentReturnRequestListState extends State<SentReturnRequestListPage> {
       ),
     );
   }
-}
-
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

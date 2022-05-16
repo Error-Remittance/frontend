@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/utils.dart';
 import 'package:frontend/register/inputAccountNumber.dart';
 
 class GetAccount extends StatefulWidget {
@@ -113,7 +114,7 @@ class _GetAccountState extends State<GetAccount> {
                          onTap: () {
                            Navigator.push(
                              context,
-                             MaterialPageRouteWithoutAnimation(
+                             NoAnimationMaterialPageRoute(
                                builder: (context) => InputAccountNumber(text: accountName[index], tag: widget.tag,),
                              ),
                            );
@@ -134,11 +135,3 @@ class _GetAccountState extends State<GetAccount> {
     );
   }
 }
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
-}
-

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/utils.dart';
 import 'package:frontend/register/checkPattern.dart';
 import 'package:frontend/mainView/accountList.dart';
 
@@ -67,7 +68,7 @@ class _InputAccountNumberState extends State<InputAccountNumber> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRouteWithoutAnimation(
+                  NoAnimationMaterialPageRoute(
                     builder: (context) => widget.tag == 0 ? CheckPattern() : AccountListPage(),
                   ),
                 );
@@ -83,11 +84,3 @@ class _InputAccountNumberState extends State<InputAccountNumber> {
     );
   }
 }
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
-}
-

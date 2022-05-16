@@ -1,33 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/mainView/selectReturnForm.dart';
+import 'package:frontend/utils.dart';
+import 'package:frontend/mainView/selectAskReturn/selectAskReturnForm.dart';
 
-class SelectReturnPage extends StatefulWidget {
-  const SelectReturnPage({Key? key}) : super(key: key);
+class SelectAskReturnPage extends StatefulWidget {
+  const SelectAskReturnPage({Key? key}) : super(key: key);
 
   @override
-  _SelectReturnPageState createState() => _SelectReturnPageState();
+  _SelectAskReturnPageState createState() => _SelectAskReturnPageState();
 }
 
-class _SelectReturnPageState extends State<SelectReturnPage> {
+class _SelectAskReturnPageState extends State<SelectAskReturnPage> {
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
-  final GlobalKey _widgetKey = GlobalKey();
 
   List<String> terms = [
-    "오송금 발생 유무를 확인하기 위해 반호나 이후 사용자의 거래내역에 대한 접근을 허가해주는 것에 동의합니다.",
-    "",
+    "송금 시 수취인에게 표시할 송금인명을 착송 팀이 임의로 변경하는 것에 동의합니다.",
+    "수취인이 반환 요청에 동의할 시 서비스 이용수수료를 제외한 금액이 반환되는 것에 동의합니다.",
+    "1원을 두 번 나눠 송금하는 행동과 1원 송금 시 본인인증을 한 번만 진행함을 동의함니다.",
+    "오송금 발생 유무를 확인하기 위해 반환 이후 사용자의 거래내역에 대한 접근을 허가해주는 것에 동의합니다.",
     "(선택)마케팅 동의란",
   ];
 
   bool isAllChecked = false;
-  List<bool> isChecked = [false, false, false];
-
-  _getPosition(GlobalKey key) {
-    if (key.currentContext != null) {
-      final RenderBox renderBox = key.currentContext!.findRenderObject() as RenderBox;
-      final position = renderBox.localToGlobal(Offset.zero); return position;
-    }
-  }
+  List<bool> isChecked = [false, false, false, false, false];
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +44,7 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
         ),
         centerTitle: true,
         title: const Text(
-          "착오송금 반환 동의",
+          "착오송금 반환 요청",
           style: TextStyle(
             color: Colors.grey,
             fontSize: 18,
@@ -67,7 +62,7 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
               Container(
                 margin: const EdgeInsets.only(top: 15, left: 15),
                 child: const Text(
-                  "착오송금 반환을 위한\n약관동의가 필요합니다.",
+                  "착오송금 반환 요청을 위한\n약관동의가 필요합니다.",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -113,10 +108,14 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
                                       isChecked[0] = true;
                                       isChecked[1] = true;
                                       isChecked[2] = true;
+                                      isChecked[3] = true;
+                                      isChecked[4] = true;
                                     } else {
                                       isChecked[0] = false;
                                       isChecked[1] = false;
                                       isChecked[2] = false;
+                                      isChecked[3] = false;
+                                      isChecked[4]= false;
                                     }
                                   });
                                 },
@@ -144,7 +143,7 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
                               ListView.builder(
                                   scrollDirection: Axis.vertical,
                                   shrinkWrap: true,
-                                  itemCount: 3,
+                                  itemCount: 5,
                                   itemBuilder: (BuildContext context, int index) {
                                     return Container(
                                       margin: const EdgeInsets.only(top: 5),
@@ -163,7 +162,7 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
                                                 if(!isChecked[index]) {
                                                   isAllChecked = false;
                                                 }
-                                                if(isChecked[0] && isChecked[1] && isChecked[2]) {
+                                                if(isChecked[0] && isChecked[1] && isChecked[2] && isChecked[3] && isChecked[4]) {
                                                   isAllChecked = true;
                                                 }
                                               });
@@ -196,13 +195,11 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
               const Spacer(),
               Center(
                 child: IconButton(
-                  key: _widgetKey,
                   onPressed: () {
-                    print("${_getPosition(_widgetKey).dx}, ${_getPosition(_widgetKey).dy}");
                     Navigator.push(
                       context,
-                      MaterialPageRouteWithoutAnimation(
-                        builder: (context) => SelectReturnFormPage(dx: _getPosition(_widgetKey).dx, dy: _getPosition(_widgetKey).dy,),
+                      NoAnimationMaterialPageRoute(
+                        builder: (context) => SelectAskReturnFormPage(),
                       ),
                     );
                   },
@@ -218,11 +215,4 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
       ),
     );
   }
-}
-
-class MaterialPageRouteWithoutAnimation extends MaterialPageRoute {
-  MaterialPageRouteWithoutAnimation({builder}) : super(builder: builder);
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 0);
 }
