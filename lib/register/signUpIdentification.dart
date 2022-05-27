@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:frontend/utils.dart';
 import 'package:frontend/register/signUpStart.dart';
-import 'package:frontend/register/agreementToTerms.dart';
+import 'package:frontend/alertWindow.dart';
+import 'package:frontend/register/signUpSetIdPw.dart';
 
 class SignUpIdentificationPage extends StatefulWidget {
   const SignUpIdentificationPage({Key? key}) : super(key: key);
@@ -23,6 +24,13 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
   bool isAuthenticated = false;
   String authMessage = "인증 요청을 해주세요.";
   late String verificationId;
+
+  var alertMessage = [
+    '본인 확인란에 내용을 전부 입력해주세요!',
+    '한글 이외의 문자는 입력할 수 없습니다.',
+    '인증 번호가 틀렸습니다.',
+    '확인 버튼을 누르세요.'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -180,7 +188,14 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
             ),
             const Spacer(),
             IconButton(
-              onPressed: showAgreeModal,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  NoAnimationMaterialPageRoute(
+                    builder: (context) => const SignUpSetIdPwPage(),
+                  ),
+                );
+              },
               icon: Image.asset('lib/assets/button_accept.png'),
               iconSize: 80,
               splashColor: Colors.transparent,
@@ -192,17 +207,15 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
     );
   }
 
-  showAgreeModal() {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (BuildContext context) {
-        return StatefulBuilder(
-            builder: (BuildContext context, StateSetter setState) {
-              return AgreementToTermsModal();
-            }
-        );
-      },
+  // ignore: non_constant_identifier_names
+  void FlutterDialog(String text) {
+    showDialog(
+        context: context,
+        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertWindow(contents: text);
+        }
     );
   }
 }
