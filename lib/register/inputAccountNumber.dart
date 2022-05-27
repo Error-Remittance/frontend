@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/utils.dart';
 import 'package:frontend/register/checkPattern.dart';
 import 'package:frontend/mainView/accountList.dart';
+import 'package:frontend/alertWindow.dart';
 
 class InputAccountNumber extends StatefulWidget {
   final String text;
@@ -15,6 +16,7 @@ class InputAccountNumber extends StatefulWidget {
 class _InputAccountNumberState extends State<InputAccountNumber> {
 
   final accountNumberController = TextEditingController();
+  var alertMessage = '성함과 일치하는 계좌를 발견하게 못했어요!\n계좌번호를 제대로 입력했는지 확인해주세요.';
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +83,18 @@ class _InputAccountNumberState extends State<InputAccountNumber> {
           ],
         ),
       ),
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  void FlutterDialog(String text) {
+    showDialog(
+        context: context,
+        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertWindow(contents: text);
+        }
     );
   }
 }

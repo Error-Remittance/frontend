@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/utils.dart';
 import 'package:frontend/mainView/selectAskReturn/selectAskReturnForm.dart';
+import 'package:frontend/alertWindow.dart';
 
 class SelectAskReturnPage extends StatefulWidget {
   const SelectAskReturnPage({Key? key}) : super(key: key);
@@ -196,12 +197,13 @@ class _SelectAskReturnPageState extends State<SelectAskReturnPage> {
               Center(
                 child: IconButton(
                   onPressed: () {
+                    isChecked[0] && isChecked[1] && isChecked[2] && isChecked[3] ?
                     Navigator.push(
                       context,
                       NoAnimationMaterialPageRoute(
                         builder: (context) => SelectAskReturnFormPage(),
                       ),
-                    );
+                    ) : FlutterDialog("필수 약관에 동의해주세요.");
                   },
                   icon: Image.asset('lib/assets/button_submit.png'),
                   iconSize: 80,
@@ -213,6 +215,18 @@ class _SelectAskReturnPageState extends State<SelectAskReturnPage> {
           ),
         ),
       ),
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  void FlutterDialog(String text) {
+    showDialog(
+        context: context,
+        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertWindow(contents: text);
+        }
     );
   }
 }

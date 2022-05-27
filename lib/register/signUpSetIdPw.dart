@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/utils.dart';
-import 'package:frontend/register/setPattern.dart';
+import 'package:frontend/register/agreementToTerms.dart';
+import 'package:frontend/alertWindow.dart';
 
 
 class SignUpSetIdPwPage extends StatefulWidget {
@@ -14,6 +14,12 @@ class _SignUpSetIdPwPageState extends State<SignUpSetIdPwPage> {
   final idController = TextEditingController();
   final pwController1 = TextEditingController();
   final pwController2 = TextEditingController();
+
+  var alertMessage = [
+    '중복된 아이디입니다.',
+    '비밀번호를 정확하게 입력해주세요',
+    '영문, 숫자를 포함한 8자를 입력헤주세요.'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -94,14 +100,7 @@ class _SignUpSetIdPwPageState extends State<SignUpSetIdPwPage> {
             ),
             const Spacer(),
             IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  NoAnimationMaterialPageRoute(
-                    builder: (context) => const SetPattern(),
-                  ),
-                );
-              },
+              onPressed: showAgreeModal,
               icon: Image.asset('lib/assets/button_accept.png'),
               iconSize: 80,
               splashColor: Colors.transparent,
@@ -110,6 +109,32 @@ class _SignUpSetIdPwPageState extends State<SignUpSetIdPwPage> {
           ],
         ),
       ),
+    );
+  }
+
+  showAgreeModal() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+              return AgreementToTermsModal();
+            }
+        );
+      },
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  void FlutterDialog(String text) {
+    showDialog(
+        context: context,
+        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertWindow(contents: text);
+        }
     );
   }
 }

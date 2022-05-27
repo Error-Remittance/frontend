@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/utils.dart';
-import 'package:frontend/register/signUpSetIdPw.dart';
+import 'package:frontend/register/setPattern.dart';
+import 'package:frontend/alertWindow.dart';
 
 class AgreementToTermsModal extends StatefulWidget {
   const AgreementToTermsModal({Key? key}) : super(key: key);
@@ -159,9 +160,9 @@ class _AgreementToTermsModalState extends State<AgreementToTermsModal> {
                   Navigator.push(
                     context,
                     NoAnimationMaterialPageRoute(
-                      builder: (context) => SignUpSetIdPwPage(),
+                      builder: (context) => SetPattern(),
                     ),
-                  ) : null;
+                  ) : FlutterDialog("필수 약관에 동의해주세요.");
                 },
                 child: const Text(
                   '확인',
@@ -190,6 +191,18 @@ class _AgreementToTermsModalState extends State<AgreementToTermsModal> {
           ],
         ),
       ),
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  void FlutterDialog(String text) {
+    showDialog(
+        context: context,
+        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertWindow(contents: text);
+        }
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:frontend/utils.dart';
 import 'package:frontend/mainView/selectAskReturn//selectAskReturnRequest.dart';
+import 'package:frontend/alertWindow.dart';
 
 class SelectAskReturnFormPage extends StatefulWidget {
   const SelectAskReturnFormPage({Key? key}) : super(key: key);
@@ -354,12 +355,13 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
                     margin: const EdgeInsets.only(top: 567,),
                     child: IconButton(
                       onPressed: () {
+                        isChecked[0] || isChecked[1] || isChecked[2] || isChecked[3] ?
                         Navigator.push(
                           context,
                           NoAnimationMaterialPageRoute(
                             builder: (context) => SelectAskReturnRequestPage(),
                           ),
-                        );
+                        ) : FlutterDialog("사유 체크란에 사유를 체크해주세요.\n(기타 체크 시 글 작성 필요)");
                       },
                       icon: Image.asset('lib/assets/button_submit.png'),
                       iconSize: 80,
@@ -373,6 +375,18 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
           ),
         ),
       ),
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  void FlutterDialog(String text) {
+    showDialog(
+        context: context,
+        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertWindow(contents: text);
+        }
     );
   }
 }

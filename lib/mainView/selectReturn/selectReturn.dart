@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/utils.dart';
 import 'package:frontend/mainView/selectReturn/selectReturnForm.dart';
+import 'package:frontend/alertWindow.dart';
 
 class SelectReturnPage extends StatefulWidget {
   const SelectReturnPage({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
 
   List<String> terms = [
     "오송금 발생 유무를 확인하기 위해 반호나 이후 사용자의 거래내역에 대한 접근을 허가해주는 것에 동의합니다.",
-    "",
+    "본 착송팀이 해당 금액 반환 확인이 된 이후 수고비를 제공해주는 것에 동의합니다.",
     "(선택)마케팅 동의란",
   ];
 
@@ -200,12 +201,13 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
                   key: _widgetKey,
                   onPressed: () {
                     print("${_getPosition(_widgetKey).dx}, ${_getPosition(_widgetKey).dy}");
+                    isChecked[0] && isChecked[1] ?
                     Navigator.push(
                       context,
                       NoAnimationMaterialPageRoute(
                         builder: (context) => SelectReturnFormPage(dx: _getPosition(_widgetKey).dx, dy: _getPosition(_widgetKey).dy,),
                       ),
-                    );
+                    ) : FlutterDialog("필수 약관에 동의해주세요.");
                   },
                   icon: Image.asset('lib/assets/button_submit.png'),
                   iconSize: 80,
@@ -217,6 +219,18 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
           ),
         ),
       ),
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  void FlutterDialog(String text) {
+    showDialog(
+        context: context,
+        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertWindow(contents: text);
+        }
     );
   }
 }
