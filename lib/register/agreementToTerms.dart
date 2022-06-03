@@ -18,8 +18,8 @@ class _AgreementToTermsModalState extends State<AgreementToTermsModal> {
     "착송 필수 항목 모두 동의",
     "휴대폰/카드 본인확인 서비스",
     "문자/이메일 수신 동의",
-    "맞춤형 광고 선택 동의",
-    "마케팅 정보 수신 선택 동의",
+    "(선택) 맞춤형 광고 동의",
+    "(선택) 마케팅 정보 수신 동의",
   ];
 
   List<bool> isChecked = [false, false, false, false, false];

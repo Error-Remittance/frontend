@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/utils.dart';
 import 'package:frontend/register/checkPattern.dart';
 import 'package:frontend/mainView/accountList.dart';
+import 'package:frontend/register/inputAccountNumberCheck.dart';
 import 'package:frontend/alertWindow.dart';
 
 class InputAccountNumber extends StatefulWidget {
@@ -21,6 +22,7 @@ class _InputAccountNumberState extends State<InputAccountNumber> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white, // Appbar 배경색
@@ -71,7 +73,7 @@ class _InputAccountNumberState extends State<InputAccountNumber> {
                 Navigator.push(
                   context,
                   NoAnimationMaterialPageRoute(
-                    builder: (context) => widget.tag == 0 ? CheckPattern() : AccountListPage(),
+                    builder: (context) => InputAccountNumberCheck(text: widget.text, tag: widget.tag, number: accountNumberController.text,),
                   ),
                 );
               },
