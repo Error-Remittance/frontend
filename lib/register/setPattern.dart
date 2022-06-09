@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/utils.dart';
 import 'package:frontend/alertWindow.dart';
 import 'package:frontend/register/patternLock/patternLock.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:frontend/register/fingerPrintRegistration.dart';
+import 'package:frontend/register/getAccount.dart';
 
 class SetPattern extends StatefulWidget {
   const SetPattern({Key? key}) : super(key: key);
@@ -18,6 +20,9 @@ class _SetPatternState extends State<SetPattern> {
   bool _isButtonDisabled = true;
   bool isConfirm = false;
   List<int>? pattern;
+
+  final String _signupText = "드디어 마지막 단계에요!\n계좌를 연결해 '착송'해주시면 됩니다";
+  final int _signupTag = 0;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -119,10 +124,7 @@ class _SetPatternState extends State<SetPattern> {
               child: ElevatedButton(
                 onPressed: () {
                   _isButtonDisabled ? null :
-                  showMaterialModalBottomSheet(
-                    context: context,
-                    builder: (context) => BottomModal(),
-                  );
+                  ConfrimDialog(context);
                 },
                 child: const Text(
                   '확인',
@@ -169,5 +171,62 @@ class _SetPatternState extends State<SetPattern> {
         return AlertWindow(contents: text);
       }
     );
+  }
+
+  void ConfrimDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext ctx) {
+          return AlertDialog(
+            // RoundedRectangleBorder - Dialog 화면 모서리 둥글게 조절
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            //Dialog Main Title
+            title: Column(
+              children: const <Widget>[
+                Text("알림창"),
+              ],
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const <Widget>[
+                Center(
+                  child: Text(
+                    '지문 등록을 하시겠습니까?',
+                  ),
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          NoAnimationMaterialPageRoute(
+                              builder: (context) => GetAccount(text: _signupText, tag: _signupTag)
+                          ),
+                        );
+                      },
+                      child: const Text('닫기')
+                  ),
+                  const SizedBox(width: 50,),
+                  TextButton(
+                      onPressed: () {
+                        showMaterialModalBottomSheet(
+                          context: context,
+                          builder: (context) => BottomModal(),
+                        );
+                      },
+                      child: const Text('확인')
+                  ),
+                ],
+              ),
+            ],
+          );
+        });
   }
 }
