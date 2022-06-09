@@ -14,8 +14,8 @@ class _FingerPrintRegistrationModalState extends State<FingerPrintRegistrationMo
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  String _signupText = "드디어 마지막 단계에요!\n계좌를 연결해 '착송'해주시면 됩니다";
-  int _signupTag = 0;
+  final String _signupText = "드디어 마지막 단계에요!\n계좌를 연결해 '착송'해주시면 됩니다";
+  final int _signupTag = 0;
 
   @override
   Widget build(BuildContext context) {
