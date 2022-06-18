@@ -5,13 +5,14 @@ package com.example.frontend
 //class MainActivity: FlutterActivity() {
 //}
 
+import io.flutter.embedding.android.FlutterActivity
+import androidx.annotation.NonNull
 import io.flutter.embedding.android.FlutterFragmentActivity
-import io.flutter.plugins.GeneratedPluginRegistrant
 import io.flutter.embedding.engine.FlutterEngine
-import androidx.annotation.NonNull;
+import io.flutter.plugins.GeneratedPluginRegistrant
 
 class MainActivity: FlutterFragmentActivity() {
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
-        GeneratedPluginRegistrant.registerWith(flutterEngine);
+        GeneratedPluginRegistrant.registerWith(flutterEngine)
     }
 }
