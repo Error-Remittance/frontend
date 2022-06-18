@@ -184,7 +184,7 @@ class _AgreementToTermsModalState extends State<AgreementToTermsModal> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   primary: isChecked[0] && isChecked[1] && isChecked[2] ? const Color(0xff64ACF9) : const Color(0xffd9d9d9),
-                  side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
+                  side: BorderSide(width:1, color: isChecked[0] && isChecked[1] && isChecked[2] ? const Color(0xff64ACF9) : const Color(0xffd9d9d9)),
                 ),
               ),
             ),
