@@ -62,10 +62,10 @@ class _ConfirmPatternState extends State<ConfirmPattern> {
               Flexible(
                 child: PatternLock(
                   selectedColor: Colors.blue,
-                  pointRadius: 10,
+                  pointRadius: 8.5,
                   showInput: true,
                   dimension: 3,
-                  relativePadding: 0.7,
+                  relativePadding: 1,
                   selectThreshold: 25,
                   fillPoints: true,
                   onInputComplete: (List<int> input) {

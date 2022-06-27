@@ -41,7 +41,7 @@ class _AgreementToTermsModalState extends State<AgreementToTermsModal> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(
-                    color: const Color(0xff8a93bc),
+                    color: const Color(0xff000000),
                   )
               ),
               child: Row(
@@ -184,7 +184,7 @@ class _AgreementToTermsModalState extends State<AgreementToTermsModal> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   primary: isChecked[0] && isChecked[1] && isChecked[2] ? const Color(0xff64ACF9) : const Color(0xffd9d9d9),
-                  side: BorderSide(width:1, color: isChecked[0] && isChecked[1] && isChecked[2] ? const Color(0xff64ACF9) : const Color(0xffd9d9d9)),
+                  // side: isChecked[0] && isChecked[1] && isChecked[2] ? BorderSide(width:1, color: Color(0xff64ACF9)) : BorderSide(width:1, color: Color(0xffd9d9d9)),
                 ),
               ),
             ),

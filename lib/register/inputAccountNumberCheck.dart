@@ -169,7 +169,7 @@ class _InputAccountNumberCheckState extends State<InputAccountNumberCheck> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     primary: const Color(0xff64ACF9),
-                    side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
+                    // side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
                   ),
                 ),
               ),

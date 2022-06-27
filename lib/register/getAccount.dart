@@ -59,6 +59,8 @@ class _GetAccountState extends State<GetAccount> {
     "수협은행",
   ];
 
+  var appbarHeight = AppBar().preferredSize.height;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,27 +86,26 @@ class _GetAccountState extends State<GetAccount> {
              width: MediaQuery.of(context).size.width,
              height: MediaQuery.of(context).size.height*0.15,
              alignment: Alignment.topLeft,
-             margin: const EdgeInsets.only(bottom: 20),
-             padding: const EdgeInsets.only(top: 10, bottom: 20, left: 15),
+             padding: const EdgeInsets.only(top: 20, bottom: 20, left: 40),
              child: Text(
                widget.text,
                style: const TextStyle(
-                   fontSize: 24,
+                   fontSize: 20,
                    fontWeight: FontWeight.w800,
                ),
              ),
            ),
            SingleChildScrollView(
              child: Container(
-               padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
+               padding: const EdgeInsets.only(top: 15, bottom: 15,left: 20, right: 20),
                width: MediaQuery.of(context).size.width,
-               height: MediaQuery.of(context).size.height*0.65,
+               height: MediaQuery.of(context).size.height*0.77 - appbarHeight,
                child: GridView.builder(
                  itemCount: accountItem.length,
                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                    crossAxisCount: 3, //1 개의 행에 보여줄 item 개수
                    mainAxisSpacing: 0, //수평 Padding
-                   crossAxisSpacing: 0, //수직 Padding
+                   crossAxisSpacing: 7.5, //수직 Padding
                  ),
                  itemBuilder: (BuildContext context, int index) {
                    //item 의 반목문 항목 형성
@@ -112,6 +113,7 @@ class _GetAccountState extends State<GetAccount> {
                      children: [
                        GestureDetector(
                          onTap: () {
+                           print(appbarHeight);
                            Navigator.push(
                              context,
                              NoAnimationMaterialPageRoute(
