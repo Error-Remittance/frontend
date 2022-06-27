@@ -40,7 +40,7 @@ class _CheckPatternState extends State<CheckPattern> {
           children: <Widget>[
             Container(
               alignment: Alignment.topLeft,
-              margin: const EdgeInsets.only(left: 25,top:20, bottom: 20),
+              margin: const EdgeInsets.only(left: 40, top:20, bottom: 20),
               child: const Text(
                 "회원님 반갑습니다!\n로그인 해주세요",
                 style: TextStyle(
@@ -71,10 +71,10 @@ class _CheckPatternState extends State<CheckPattern> {
             Flexible(
               child: PatternLock(
                 selectedColor: Colors.blue,
-                pointRadius: 10,
+                pointRadius: 8.5,
                 showInput: true,
                 dimension: 3,
-                relativePadding: 0.7,
+                relativePadding: 1,
                 selectThreshold: 25,
                 fillPoints: true,
                 onInputComplete: (List<int> input) {
@@ -93,9 +93,7 @@ class _CheckPatternState extends State<CheckPattern> {
                   Navigator.push(
                     context,
                     NoAnimationMaterialPageRoute(
-                      builder: (context) => const AccountListPage(
-
-                      ),
+                      builder: (context) => const AccountListPage(),
                     ),
                   );
                 },
@@ -119,7 +117,7 @@ class _CheckPatternState extends State<CheckPattern> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   primary: const Color(0xffD9D9D9),
-                  side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
+                  // side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
                 ),
               ),
             ),

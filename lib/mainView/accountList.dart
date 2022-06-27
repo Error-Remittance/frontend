@@ -49,6 +49,7 @@ class _AccountListState extends State<AccountListPage> {
             child: Center(
               child: Column(
                 children: <Widget>[
+                  const Spacer(),
                   Container(
                     margin: const EdgeInsets.only(top: 10, bottom: 15),
                     padding: const EdgeInsets.all(5),
@@ -150,55 +151,65 @@ class _AccountListState extends State<AccountListPage> {
                             shrinkWrap: true,
                             itemCount: 20,
                             itemBuilder: (BuildContext context, int index) {
-                              return Container(
-                                margin: const EdgeInsets.only(left: 10, right: 10),
-                                decoration: const BoxDecoration(
-                                  border: Border(bottom: BorderSide(color: Colors.black12)),
-                                ),
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    NoAnimationMaterialPageRoute(
+                                      builder: (context) => SelectProcessPage(),
+                                    ),
+                                  );
+                                },
                                 child: Container(
-                                  padding: const EdgeInsets.fromLTRB(
-                                    14, 10, 14, 10,
+                                  margin: const EdgeInsets.only(left: 10, right: 10),
+                                  decoration: const BoxDecoration(
+                                    border: Border(bottom: BorderSide(color: Colors.black12)),
                                   ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        margin: const EdgeInsets.only(right: 15),
-                                        width: 25,
-                                        height: 25,
-                                        child: Image.asset(
-                                          'lib/assets/shinhanbank_logo.png',
+                                  child: Container(
+                                    padding: const EdgeInsets.fromLTRB(
+                                      14, 10, 14, 10,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          margin: const EdgeInsets.only(right: 15),
+                                          width: 25,
+                                          height: 25,
+                                          child: Image.asset(
+                                            'lib/assets/shinhanbank_logo.png',
+                                          ),
                                         ),
-                                      ),
-                                      Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            list[index % 2].toString(),
-                                            style: const TextStyle(
-                                              color: Color(0xFFA7A7A7),
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w400,
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              list[index % 2].toString(),
+                                              style: const TextStyle(
+                                                color: Color(0xFFA7A7A7),
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                              ),
                                             ),
-                                          ),
-                                          const Text(
-                                            '510,000',
-                                            style: TextStyle(
-                                              color: Color(0xFF3A3A3A),
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w800,
+                                            const Text(
+                                              '510,000',
+                                              style: TextStyle(
+                                                color: Color(0xFF3A3A3A),
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w800,
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                      const Spacer(),
-                                      const Icon(
-                                        Icons.chevron_right,
-                                        color: Color(0xFF3A3A3A),
-                                        size: 20,
-                                      ),
-                                    ],
+                                          ],
+                                        ),
+                                        const Spacer(),
+                                        const Icon(
+                                          Icons.chevron_right,
+                                          color: Color(0xFF3A3A3A),
+                                          size: 20,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );

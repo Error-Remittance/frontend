@@ -55,7 +55,7 @@ class _SelectProcessPageState extends State<SelectProcessPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 15, left: 15),
+                margin: const EdgeInsets.only(top: 15, left: 40),
                 child: const Text(
                   "선택하신 계좌를 통해\n어떤 업무를 진행하실건가요?",
                   style: TextStyle(
@@ -67,12 +67,15 @@ class _SelectProcessPageState extends State<SelectProcessPage> {
               ),
               Center(
                 child: Container(
-                  margin: const EdgeInsets.only(top: 100),
+                  margin: const EdgeInsets.only(top: 50),
                   padding: const EdgeInsets.only(left: 15, right: 15),
                   width: MediaQuery.of(context).size.width * 0.80,
                   height: 130,
                   decoration: BoxDecoration(
                     color: const Color(0xFF1690F0),
+                    border:  Border.all(
+                      color: const Color(0xFF1690F0),
+                    ),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: Column(
@@ -161,7 +164,7 @@ class _SelectProcessPageState extends State<SelectProcessPage> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       primary: Colors.white,
-                      side: const BorderSide(width:1, color: Color(0xff8a93bc)),
+                      side: const BorderSide(width:1, color: Color(0xff000000)),
                     ),
                   ),
                 ),
@@ -208,7 +211,7 @@ class _SelectProcessPageState extends State<SelectProcessPage> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       primary: Colors.white,
-                      side: const BorderSide(width:1, color: Color(0xff8a93bc)),
+                      side: const BorderSide(width:1, color: Color(0xff000000)),
                     ),
                   ),
                 ),

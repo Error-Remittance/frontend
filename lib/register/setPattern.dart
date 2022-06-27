@@ -53,7 +53,7 @@ class _SetPatternState extends State<SetPattern> {
               children: [
                 Container(
                   alignment: Alignment.topLeft,
-                  margin: const EdgeInsets.only(left: 25,top:20, bottom: 20),
+                  margin: const EdgeInsets.only(left: 40,top:20, bottom: 20),
                   child: Text(
                     isConfirm ? "까먹지 않게 한 번 더!\n다시 패턴을 그려주세요" : "좋아요!\n이제 패턴을 설정해볼까요?",
                     style: const TextStyle(
@@ -86,7 +86,7 @@ class _SetPatternState extends State<SetPattern> {
             Flexible(
               child: PatternLock(
                 selectedColor: Colors.blue,
-                pointRadius: 10,
+                pointRadius: 8.5,
                 onInputComplete: (List<int> input) {
                   if (!isConfirm && input.length < 4) {
                     FlutterDialog("최소 4개 이상 선택해주세요!");
@@ -146,7 +146,7 @@ class _SetPatternState extends State<SetPattern> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   primary: _isButtonDisabled ? const Color(0xffD9D9D9) : const Color(0xff64ACF9),
-                  side: BorderSide(width:1, color: _isButtonDisabled ? const Color(0xffD9D9D9) : const Color(0xff64ACF9)),
+                  // side: BorderSide(width:1, color: _isButtonDisabled ? const Color(0xffD9D9D9) : const Color(0xff64ACF9)),
                 ),
               ),
             ),

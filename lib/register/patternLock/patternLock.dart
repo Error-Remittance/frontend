@@ -33,7 +33,7 @@ class PatternLock extends StatefulWidget {
   const PatternLock({
     Key? key,
     this.dimension = 3,
-    this.relativePadding = 0.7,
+    this.relativePadding = 1,
     this.selectedColor, // Theme.of(context).primaryColor if null
     this.notSelectedColor = Colors.black,
     this.pointRadius = 10,

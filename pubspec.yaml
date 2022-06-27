@@ -29,7 +29,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_native_splash: ^2.1.3+1
+#  flutter_native_splash: ^2.1.3+1
   flutter_screenutil: ^5.1.1
   page_transition: ^2.0.5
   bottom_drawer: ^0.0.5
@@ -53,9 +53,9 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
 
-flutter_native_splash:
-  color: "#ffffff"
-  image: lib/assets/ic_launcher_temp.png
+#flutter_native_splash:
+#  color: "#ffffff"
+#  image: lib/assets/ic_launcher_temp.png
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

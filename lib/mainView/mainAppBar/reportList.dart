@@ -20,6 +20,8 @@ class _ReportListState extends State<ReportListPage> {
   var month = [6, 7, 8, 10, 12];
   var day = [28, 2, 6, 20, 25];
 
+  var appbarHeight = AppBar().preferredSize.height;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,8 +68,8 @@ class _ReportListState extends State<ReportListPage> {
           children: <Widget>[
             // const Spacer(),
             Container(
-              margin: const EdgeInsets.only(top:20),
-              height: MediaQuery.of(context).size.height * 0.8,
+              padding: const EdgeInsets.only(top: 15, bottom: 10),
+              height: MediaQuery.of(context).size.height*0.96 - appbarHeight,
               child: SingleChildScrollView(
                 physics: const ScrollPhysics(),
                 child: Column(

@@ -31,7 +31,7 @@ class _SignUpStartState extends State<SignUpStartPage> {
                   height: MediaQuery.of(context).size.height * 0.6,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    border: Border.all(color: const Color(0xff8a93bc)),
+                    border: Border.all(color: const Color(0xff000000)),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: Column(
@@ -74,9 +74,7 @@ class _SignUpStartState extends State<SignUpStartPage> {
                     Navigator.push(
                       context,
                       NoAnimationMaterialPageRoute(
-                        builder: (context) => const SignUpIdentificationPage(
-
-                        ),
+                        builder: (context) => const SignUpIdentificationPage(),
                       ),
                     );
                   },
@@ -116,7 +114,7 @@ class _SignUpStartState extends State<SignUpStartPage> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     primary: Colors.white,
-                    side: const BorderSide(width:1, color: Color(0xff8a93bc)),
+                    side: const BorderSide(width:1, color: Color(0xff000000)),
                   ),
                 ),
               ),
@@ -127,9 +125,7 @@ class _SignUpStartState extends State<SignUpStartPage> {
                     Navigator.push(
                       context,
                       NoAnimationMaterialPageRoute(
-                        builder: (context) => CheckPattern(
-
-                        ),
+                        builder: (context) => CheckPattern(),
                       ),
                     );
                   },
@@ -167,7 +163,7 @@ class _SignUpStartState extends State<SignUpStartPage> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     primary: Colors.white,
-                    side: const BorderSide(width:1, color: Color(0xff8a93bc)),
+                    side: const BorderSide(width:1, color: Color(0xff000000)),
                   ),
                 ),
               ),
