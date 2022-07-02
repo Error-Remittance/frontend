@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/utils.dart';
 import 'package:frontend/mainView/selectReturn/selectReturnForm.dart';
+import 'package:frontend/mainView/selectReturn/selectRegisteredBank.dart';
 import 'package:frontend/alertWindow.dart';
 
 class SelectReturnPage extends StatefulWidget {
@@ -67,7 +68,7 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 15, left: 15),
+                margin: const EdgeInsets.only(top: 15, left: 20),
                 child: const Text(
                   "착오송금 반환을 위한\n약관동의가 필요합니다.",
                   style: TextStyle(
@@ -205,7 +206,7 @@ class _SelectReturnPageState extends State<SelectReturnPage> {
                     Navigator.push(
                       context,
                       NoAnimationMaterialPageRoute(
-                        builder: (context) => SelectReturnFormPage(dx: _getPosition(_widgetKey).dx, dy: _getPosition(_widgetKey).dy,),
+                        builder: (context) => SelectRegisteredBank(dx: _getPosition(_widgetKey).dx, dy: _getPosition(_widgetKey).dy,),
                       ),
                     ) : FlutterDialog("필수 약관에 동의해주세요.");
                   },
