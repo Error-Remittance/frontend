@@ -68,8 +68,8 @@ class _ReportListState extends State<ReportListPage> {
           children: <Widget>[
             // const Spacer(),
             Container(
-              padding: const EdgeInsets.only(top: 15, bottom: 10),
-              height: MediaQuery.of(context).size.height*0.96 - appbarHeight,
+              padding: const EdgeInsets.only(top: 10, bottom: 10),
+              height: MediaQuery.of(context).size.height*0.92 - appbarHeight,
               child: SingleChildScrollView(
                 physics: const ScrollPhysics(),
                 child: Column(

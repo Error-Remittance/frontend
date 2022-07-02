@@ -13,6 +13,7 @@ class SelectAskReturnPage extends StatefulWidget {
 class _SelectAskReturnPageState extends State<SelectAskReturnPage> {
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+  final GlobalKey _widgetKey = GlobalKey();
 
   List<String> terms = [
     "송금 시 수취인에게 표시할 송금인명을 착송 팀이 임의로 변경하는 것에 동의합니다.",
@@ -24,6 +25,13 @@ class _SelectAskReturnPageState extends State<SelectAskReturnPage> {
 
   bool isAllChecked = false;
   List<bool> isChecked = [false, false, false, false, false];
+
+  _getPosition(GlobalKey key) {
+    if (key.currentContext != null) {
+      final RenderBox renderBox = key.currentContext!.findRenderObject() as RenderBox;
+      final position = renderBox.localToGlobal(Offset.zero); return position;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +69,7 @@ class _SelectAskReturnPageState extends State<SelectAskReturnPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 15, left: 15),
+                margin: const EdgeInsets.only(top: 15, left: 20),
                 child: const Text(
                   "착오송금 반환 요청을 위한\n약관동의가 필요합니다.",
                   style: TextStyle(
@@ -196,12 +204,18 @@ class _SelectAskReturnPageState extends State<SelectAskReturnPage> {
               const Spacer(),
               Center(
                 child: IconButton(
+                  key: _widgetKey,
                   onPressed: () {
+                    print("${_getPosition(_widgetKey).dx}, ${_getPosition(_widgetKey).dy}");
                     isChecked[0] && isChecked[1] && isChecked[2] && isChecked[3] ?
                     Navigator.push(
                       context,
                       NoAnimationMaterialPageRoute(
-                        builder: (context) => SelectAskReturnFormPage(),
+                        builder: (context) => SelectAskReturnFormPage(
+                          dx: _getPosition(_widgetKey).dx,
+                          dy: _getPosition(_widgetKey).dy,
+                          bank: "",
+                        ),
                       ),
                     ) : FlutterDialog("필수 약관에 동의해주세요.");
                   },
