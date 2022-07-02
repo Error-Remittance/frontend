@@ -108,7 +108,7 @@ class _ConfirmPatternState extends State<ConfirmPattern> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     primary: const Color(0xffD9D9D9),
-                    side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
+                    // side: const BorderSide(width:1, color: Color(0xff8a9cb3)),
                   ),
                 ),
               ),

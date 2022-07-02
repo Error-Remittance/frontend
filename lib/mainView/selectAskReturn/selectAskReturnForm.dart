@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:frontend/utils.dart';
-import 'package:frontend/mainView/selectAskReturn//selectAskReturnRequest.dart';
+import 'package:frontend/mainView/selectAskReturn/selectAskReturnRequest.dart';
+import 'package:frontend/mainView/selectAskReturn/selectBank.dart';
 import 'package:frontend/alertWindow.dart';
 
 class SelectAskReturnFormPage extends StatefulWidget {
-  const SelectAskReturnFormPage({Key? key}) : super(key: key);
+  final dx;
+  final dy;
+  final bank;
+  const SelectAskReturnFormPage({Key? key, required this.dx, required this.dy, required this.bank}) : super(key: key);
 
   @override
   _SelectAskReturnFormPageState createState() => _SelectAskReturnFormPageState();
@@ -14,7 +18,8 @@ class SelectAskReturnFormPage extends StatefulWidget {
 class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
-  
+  var appbarHeight = AppBar().preferredSize.height;
+
   List<bool> isChecked = [false, false, false, false];
   List<String> _checkText = ["송금액 오기입", "계좌번호 오기입", "거래 취소", "기타"];
   @override
@@ -51,20 +56,27 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
           child: SingleChildScrollView(
             child: Stack(
               children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * 0.6,
-                      color: const Color(0xff5CAAFF),
-                    ),
-                  ],
-                ),
-                Center(
+                Positioned(
                   child: Container(
-                    margin: const EdgeInsets.only(top: 0),
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    color: const Color(0xffffffff),
+                  ),
+                ),
+                Positioned(
+                  left: 0,
+                  top: 0,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * 0.6,
+                    color: const Color(0xff5CAAFF),
+                  ),
+                ),
+                Positioned(
+                  left: 20,
+                  right: 20,
+                  top: 5,
+                  child: Container(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -131,9 +143,11 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
                     ),
                   ),
                 ),
-                Center(
+                Positioned(
+                  left: 20,
+                  right: 20,
+                  top: 150,
                   child: Container(
-                    margin: const EdgeInsets.only(top: 150),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -164,18 +178,31 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
                               ),
                             ],
                           ),
-                          child: Row(
-                            children: const [
-                              Text(
-                                "은행 선택",
-                                style: TextStyle(
-                                    fontSize: 15
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                NoAnimationMaterialPageRoute(
+                                  builder: (context) => SelectBank(
+                                    dx: widget.dx,
+                                    dy: widget.dy,
+                                  ),
                                 ),
-                              ),
-                              Spacer(),
-                              Icon(Icons.chevron_right, color: Colors.black,),
-                            ],
-                          ),
+                              );
+                            },
+                            child: Row(
+                              children: [
+                                Text(
+                                  widget.bank == "" ? "은행 선택" : widget.bank,
+                                  style: const TextStyle(
+                                      fontSize: 15
+                                  ),
+                                ),
+                                Spacer(),
+                                Icon(Icons.chevron_right, color: Colors.black,),
+                              ],
+                            ),
+                          )
                         ),
                         const SizedBox(height: 10,),
                         Container(
@@ -211,163 +238,162 @@ class _SelectAskReturnFormPageState extends State<SelectAskReturnFormPage> {
                     ),
                   ),
                 ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 300),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 5, left: 5),
-                          child: const Text(
-                            "착오송금 발생 금액",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: 45,
-                          padding: const EdgeInsets.only(left: 10, right: 10),
-                          decoration: BoxDecoration(
+                Positioned(
+                  left: 20,
+                  right: 20,
+                  top: 300,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 5, left: 5),
+                        child: const Text(
+                          "착오송금 발생 금액",
+                          style: TextStyle(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black38.withOpacity(0.2),
-                                spreadRadius: 0.1,
-                                blurRadius: 8,
-                                offset: const Offset(0, 6), // changes position of shadow
-                              ),
-                            ],
-                          ),
-                          child: TextFormField(
-                            onChanged: (text) {},
-                            keyboardType: TextInputType.number,
-                            inputFormatters: [
-                              FilteringTextInputFormatter.allow(RegExp('[0-9]')),
-                            ],
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              counterText:'',
-                              hintText: '원',
-                            ),
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        height: 45,
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black38.withOpacity(0.2),
+                              spreadRadius: 0.1,
+                              blurRadius: 8,
+                              offset: const Offset(0, 6), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: TextFormField(
+                          onChanged: (text) {},
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+                          ],
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            counterText:'',
+                            hintText: '원',
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 400),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 5, left: 5),
-                          child: const Text(
-                            "사유 체크란",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: 150,
-                          padding: const EdgeInsets.only(top: 10, bottom: 10,left: 10, right: 10),
-                          decoration: BoxDecoration(
+                Positioned(
+                  left: 20,
+                  right: 20,
+                  top: 390,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 5, left: 5),
+                        child: const Text(
+                          "사유 체크란",
+                          style: TextStyle(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black38.withOpacity(0.2),
-                                spreadRadius: 0.1,
-                                blurRadius: 8,
-                                offset: const Offset(0, 6), // changes position of shadow
-                              ),
-                            ],
-                          ),
-                          child: ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            shrinkWrap: true,
-                            itemCount: 4,
-                            itemBuilder: (BuildContext context, int index) {
-                              return SizedBox(
-                                height: 32,
-                                child: Row(
-                                  children: <Widget>[
-                                    Checkbox(
-                                      shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(5),
-                                        ),
-                                      ),
-                                      value: isChecked[index],
-                                      onChanged: (value) {
-                                        setState(() {
-                                          isChecked[index] = value!;
-                                        });
-                                      },
-                                    ),
-                                    Text(
-                                      _checkText[index],
-                                      style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 13,
-                                      ),
-                                    ),
-                                    const SizedBox(width: 15,),
-                                    index == 3
-                                    ? SizedBox(
-                                      width: 200,
-                                      height: 50,
-                                      child: TextFormField(
-                                        maxLength: 30,
-                                        onChanged: (text) {},
-                                        decoration: const InputDecoration(
-                                          // border: InputBorder.none,
-                                          counterText:'',
-                                          hintText: '최대 30자까지 사유를 기입해주세요.',
-                                          hintStyle: TextStyle(
-                                            fontSize: 12,
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                    : Container(),
-                                  ],
-                                ),
-                              );
-                            },
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        height: 150,
+                        padding: const EdgeInsets.only(top: 10, bottom: 10,left: 10, right: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black38.withOpacity(0.2),
+                              spreadRadius: 0.1,
+                              blurRadius: 8,
+                              offset: const Offset(0, 6), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: 4,
+                          itemBuilder: (BuildContext context, int index) {
+                            return SizedBox(
+                              height: 32,
+                              child: Row(
+                                children: <Widget>[
+                                  Checkbox(
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(5),
+                                      ),
+                                    ),
+                                    value: isChecked[index],
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isChecked[index] = value!;
+                                      });
+                                    },
+                                  ),
+                                  Text(
+                                    _checkText[index],
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 15,),
+                                  index == 3
+                                  ? SizedBox(
+                                    width: 200,
+                                    height: 50,
+                                    child: TextFormField(
+                                      maxLength: 30,
+                                      onChanged: (text) {},
+                                      decoration: const InputDecoration(
+                                        // border: InputBorder.none,
+                                        counterText:'',
+                                        hintText: '최대 30자까지 사유를 기입해주세요.',
+                                        hintStyle: TextStyle(
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                  : Container(),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 567,),
-                    child: IconButton(
-                      onPressed: () {
-                        isChecked[0] || isChecked[1] || isChecked[2] || isChecked[3] ?
-                        Navigator.push(
-                          context,
-                          NoAnimationMaterialPageRoute(
-                            builder: (context) => SelectAskReturnRequestPage(),
-                          ),
-                        ) : FlutterDialog("사유 체크란에 사유를 체크해주세요.\n(기타 체크 시 글 작성 필요)");
-                      },
-                      icon: Image.asset('lib/assets/button_submit.png'),
-                      iconSize: 80,
-                      splashColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                    ),
+                Positioned(
+                  left: widget.dx,
+                  top: widget.dy - MediaQuery.of(context).padding.top - appbarHeight,
+                  child: IconButton(
+                    onPressed: () {
+                      isChecked[0] || isChecked[1] || isChecked[2] || isChecked[3] ?
+                      Navigator.push(
+                        context,
+                        NoAnimationMaterialPageRoute(
+                          builder: (context) => SelectAskReturnRequestPage(),
+                        ),
+                      ) : FlutterDialog("사유 체크란에 사유를 체크해주세요.\n(기타 체크 시 글 작성 필요)");
+                    },
+                    icon: Image.asset('lib/assets/button_submit.png'),
+                    iconSize: 80,
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                   ),
                 ),
               ],
