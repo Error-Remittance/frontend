@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/utils.dart';
 import 'package:frontend/mainView/accountList.dart';
+import 'package:frontend/mainView/selectReturn/selectReturn.dart';
+import 'package:frontend/alertWindow.dart';
 
 class ReceiveReturnRequestListPage extends StatefulWidget {
   const ReceiveReturnRequestListPage({Key? key}) : super(key: key);
@@ -132,7 +134,9 @@ class _ReceiveReturnRequestListState extends State<ReceiveReturnRequestListPage>
                                       ),
                                       children: [
                                         GestureDetector(
-                                          onTap: () {},
+                                          onTap: () {
+                                            ConfrimDialog(context);
+                                          },
                                           child: Container(
                                             height: 50,
                                             color: const Color(0xFFDEECFF),
@@ -205,5 +209,69 @@ class _ReceiveReturnRequestListState extends State<ReceiveReturnRequestListPage>
         ),
       ),
     );
+  }
+
+  void ConfrimDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext ctx) {
+          return AlertDialog(
+            // RoundedRectangleBorder - Dialog 화면 모서리 둥글게 조절
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            //Dialog Main Title
+            title: Column(
+              children: const <Widget>[
+                Text(
+                  '알림창',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const <Widget>[
+                Center(
+                  child: Text(
+                    '반환을 수행하시겠습니까?',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('닫기')
+                  ),
+                  const SizedBox(width: 50,),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          NoAnimationMaterialPageRoute(
+                              builder: (context) => SelectReturnPage()
+                          ),
+                        );
+                      },
+                      child: const Text('확인')
+                  ),
+                ],
+              ),
+            ],
+          );
+        });
   }
 }
