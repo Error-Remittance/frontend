@@ -58,7 +58,7 @@ class _SelectReturnDeclineState extends State<SelectReturnDecline> {
                 Positioned(
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
+                    height: MediaQuery.of(context).size.height - appbarHeight - MediaQuery.of(context).padding.top,
                     color: const Color(0xffffffff),
                   ),
                 ),

@@ -54,7 +54,7 @@ class _SelectReturnFormPageState extends State<SelectReturnFormPage> {
                 Positioned(
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
+                    height: MediaQuery.of(context).size.height - appbarHeight - MediaQuery.of(context).padding.top,
                     color: const Color(0xffffffff),
                   ),
                 ),
@@ -196,7 +196,7 @@ class _SelectReturnFormPageState extends State<SelectReturnFormPage> {
                   right: 20,
                   top: 250,
                   child: Text(
-                    "‘김우리’님으로부터 25,000원을 [신한은행-1234567890]계좌로 받은 \n"
+                    "‘김우리’님으로부터 25,000원을 [신한은행-1234567890]계좌로 받은 "
                         "내역이 있는지 다시 한 번 확인해주세요!",
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -208,10 +208,10 @@ class _SelectReturnFormPageState extends State<SelectReturnFormPage> {
                 const Positioned(
                   left: 20,
                   right: 20,
-                  top: 300,
+                  top: 325,
                   child: Text(
                     "착송팀이 재확인한 후 돈을 반환하지만, \n"
-                    "‘김우리’님의 송금 정보가 존재하지 않으면 처리 시간이 오래 걸립니다.",
+                    "‘김우리’님의 송금 정보가 존재하지 않으면 처리가 오래 걸립니다.",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Color(0xffFF4141),
