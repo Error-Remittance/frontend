@@ -103,7 +103,7 @@ class _SelectBankState extends State<SelectBank> {
                     child: Text("은행 선택"),
                   ),
                   Container(
-                    padding: const EdgeInsets.only(top: 15, bottom: 0, left: 20, right: 20),
+                    padding: const EdgeInsets.only(top: 15, left: 20, right: 20),
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height*0.8 - MediaQuery.of(context).padding.top - appbarHeight,
                     child: GridView.builder(
