@@ -42,12 +42,7 @@ class _SignUpIdentificationState extends State<SignUpIdentificationPage> {
           elevation: 0.0, // Appbar 그림자
           leading: IconButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                NoAnimationMaterialPageRoute(
-                  builder: (context) => const SignUpStartPage(),
-                ),
-              );
+              Navigator.pop(context);
             },
             icon: const Icon(
               Icons.chevron_left,

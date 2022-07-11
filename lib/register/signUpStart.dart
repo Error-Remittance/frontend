@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/utils.dart';
-import 'package:frontend/register/signUpIdentification.dart';
+import 'package:frontend/register/signUpSelecBtn.dart';
 import 'package:frontend/register/checkPattern.dart';
 
 class SignUpStartPage extends StatefulWidget {
@@ -74,7 +74,7 @@ class _SignUpStartState extends State<SignUpStartPage> {
                     Navigator.push(
                       context,
                       NoAnimationMaterialPageRoute(
-                        builder: (context) => const SignUpIdentificationPage(),
+                        builder: (context) => const SignUpSelectBtn(),
                       ),
                     );
                   },
